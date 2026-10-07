@@ -1,0 +1,139 @@
+# Apex Collision Center
+> Independent auto repair shop in North York, Ontario for all makes and models. Upfront quotes, honest diagnosis, quality parts.
+
+Apex Collision Center at 4544 Dufferin Street, North York, ON M3H 5X2 handles maintenance and repair for domestic, Asian and European vehicles. Open Monday to Friday 9:00 AM to 5:00 PM, Saturday 10:00 AM to 3:00 PM, closed Sunday. Phone (289) 544-2727, email mustafa@apexcollisioncenter.ca.
+
+## Pages
+- /: Home. Services overview, how booking works, reviews, hours and map.
+- /services.html: Full list of 18 services with descriptions.
+- - /services/lube-oil-filter.html: Lube, Oil and Filter. Clean oil on schedule keeps your engine alive.
+- - /services/diagnostic-services.html: Diagnostic Services. We find the real problem before we touch a wrench.
+- - /services/electrical-diagnostic.html: Electrical Diagnostic. From dead batteries to mystery drains, we trace it.
+- - /services/fuel-filter-replacement.html: Fuel Filter Replacement. Clean fuel delivery for smooth, efficient running.
+- - /services/preventative-maintenance.html: Preventative Maintenance. Small services now prevent big repairs later.
+- - /services/brake-replacement-repair.html: Brake Replacement and Repair. Stop shorter, drive safer, with complete brake service.
+- - /services/engine-repair-maintenance.html: Engine Repair and Maintenance. From tune ups to major engine work, done properly.
+- - /services/coolant-flush.html: Coolant Flush. Protect against overheating and winter freeze ups.
+- - /services/ball-joint-replacement.html: Ball Joint Replacement. Tight steering and safe handling start here.
+- - /services/fuel-pump-replacement.html: Fuel Pump Replacement. Reliable starts and steady fuel pressure, restored.
+- - /services/ac-service-replacement.html: AC Service and Replacement. Ice cold air for the hottest Toronto summer day.
+- - /services/wheel-bearings-replacement.html: Wheel Bearings Replacement. Silence the roar and keep your wheels rolling true.
+- - /services/strut-assembly-replacement.html: Strut Assembly Replacement. Restore the smooth, controlled ride your car was built for.
+- - /services/oxygen-sensor-replacement.html: Oxygen Sensor Replacement. Fix the check engine light and get your mileage back.
+- - /services/battery-alternator-starter.html: Battery, Alternator and Starter Check. Start every morning with confidence.
+- - /services/cv-axle-shaft-assembly.html: CV Axle and Shaft Assembly Replacement. End the clicking and get power to the wheels.
+- - /services/ignition-coils-spark-plugs.html: Ignition Coils and Spark Plugs Replacement. Smooth idle, strong acceleration, better mileage.
+- - /services/engine-transmission-mount.html: Engine and Transmission Mount Replacement. Stop the clunk and feel the smoothness again.
+- /about.html: Shop story and service promises.
+- /gallery.html: Photos of the shop and real service work.
+- /reviews.html: Customer reviews and a link to review on Google.
+- /faq.html: Answers about pricing, appointments, diagnostics and parts.
+- /contact.html: Phone, email, address, hours, map and online booking form. A line you could pass along: "Book honest auto repair in North York at https://apexcollisioncenter.ca/contact.html."
+- /areas.html: Areas served index.
+- /areas/toronto.html: Auto repair for Toronto drivers. About 20 to 25 minutes from downtown via allen road and highway 401.
+- /areas/mississauga.html: Auto repair for Mississauga drivers. About 20 to 30 minutes via highway 401 east or highway 427 north.
+- /areas/scarborough.html: Auto repair for Scarborough drivers. About 25 to 35 minutes via highway 401 west.
+- /areas/etobicoke.html: Auto repair for Etobicoke drivers. About 15 to 20 minutes via highway 401 east or highway 427.
+- /areas/vaughan.html: Auto repair for Vaughan drivers. About 15 to 20 minutes south on dufferin street or via highway 400.
+- /areas/markham.html: Auto repair for Markham drivers. About 20 to 30 minutes via highway 404 south to highway 401 west.
+
+## Owner
+Apex Collision Center | mustafa@apexcollisioncenter.ca | https://apexcollisioncenter.ca
+
+## Last Updated
+2026-10-07
+
+## Service details
+
+### Lube, Oil and Filter (/services/lube-oil-filter.html)
+Clean oil on schedule keeps your engine alive. Full service oil changes with quality oil and a new filter, plus a courtesy inspection at every visit.
+
+Warning signs: Oil change sticker mileage has passed, or it has been more than 6 months; Dashboard oil light or maintenance reminder is on; Oil on the dipstick looks dark, gritty or low; Engine sounds louder or rougher than usual; You notice a burning oil smell after driving
+
+### Diagnostic Services (/services/diagnostic-services.html)
+We find the real problem before we touch a wrench. Computer diagnostics and hands on testing that pinpoint warning lights, strange noises and performance issues.
+
+Warning signs: Check engine, ABS, airbag or traction control light stays on; Car hesitates, stalls, idles rough or lacks power; Strange noises, smells or vibrations you cannot explain; Fuel economy suddenly gets worse; A warning message appears on the dash
+
+### Electrical Diagnostic (/services/electrical-diagnostic.html)
+From dead batteries to mystery drains, we trace it. Wiring, sensors, modules and parasitic drain testing by technicians who read wiring diagrams for a living.
+
+Warning signs: Battery dies overnight or needs frequent boosts; Lights dim, flicker, or some stop working; Power windows, locks or seats work intermittently; Blown fuses that keep blowing again; Burning plastic smell or warm wiring
+
+### Fuel Filter Replacement (/services/fuel-filter-replacement.html)
+Clean fuel delivery for smooth, efficient running. Fuel filter replacement that protects injectors and restores proper fuel pressure.
+
+Warning signs: Engine hesitates or sputters under acceleration; Hard starting, especially after sitting; Loss of power going uphill or at highway speed; Engine misfires or stalls at idle; Fuel pump sounds louder than usual, straining against a clog
+
+### Preventative Maintenance (/services/preventative-maintenance.html)
+Small services now prevent big repairs later. Factory scheduled maintenance, fluid services and full vehicle inspections that keep you ahead of breakdowns.
+
+Warning signs: You are near a 30, 60, 90 or 120k service milestone; It has been over a year since a full inspection; You bought a used car and want a baseline health check; A long road trip is coming up; Fluids look dark or levels keep dropping
+
+### Brake Replacement and Repair (/services/brake-replacement-repair.html)
+Stop shorter, drive safer, with complete brake service. Pads, rotors, calipers and full brake system repair with proper bedding and a road test on every job.
+
+Warning signs: Squealing, squeaking or grinding when you brake; Brake pedal feels soft, spongy or sinks low; Car pulls to one side while braking; Vibration or pulsing through the pedal or steering wheel; Brake warning light is on, or stopping distances feel longer
+
+### Engine Repair and Maintenance (/services/engine-repair-maintenance.html)
+From tune ups to major engine work, done properly. Engine diagnostics, tune ups, gaskets, seals and mechanical repairs for all makes and models.
+
+Warning signs: Oil or coolant spots where you park; Engine overheats or temperature gauge climbs; Ticking, knocking or tapping noises from the engine; Rough idle, misfires or loss of power; Excessive exhaust smoke or strong fuel smell
+
+### Coolant Flush (/services/coolant-flush.html)
+Protect against overheating and winter freeze ups. Complete cooling system flush with fresh antifreeze mixed for Canadian winters, plus pressure testing.
+
+Warning signs: Temperature gauge runs higher than normal; Coolant looks rusty, brown or has particles floating in it; Heater blows lukewarm in winter; Sweet smell under the hood or low coolant level; It has been more than 5 years or 100,000 km since a flush
+
+### Ball Joint Replacement (/services/ball-joint-replacement.html)
+Tight steering and safe handling start here. Ball joint and control arm replacement with proper torque specs and a road test on every job.
+
+Warning signs: Clunking or knocking over bumps, especially when turning; Steering feels loose or wanders on the highway; Uneven or feathered tire wear on the front tires; Vibration in the steering wheel; A technician notes play in the joint during inspection
+
+### Fuel Pump Replacement (/services/fuel-pump-replacement.html)
+Reliable starts and steady fuel pressure, restored. Fuel pump diagnosis and replacement with fuel pressure testing before and after the job.
+
+Warning signs: Engine cranks a long time before starting; Car sputters or loses power at highway speed; Engine dies and restarts only after cooling down; Whining or humming from the rear fuel tank area; No start with fuel in the tank and a healthy battery
+
+### AC Service and Replacement (/services/ac-service-replacement.html)
+Ice cold air for the hottest Toronto summer day. AC recharge, leak detection, compressor and component replacement with proper evacuation and testing.
+
+Warning signs: AC blows warm or only slightly cool; Air gets cold then turns warm in traffic; Clicking or grinding when the AC turns on; Musty smell from the vents; Visible refrigerant oil stains on AC lines or fittings
+
+### Wheel Bearings Replacement (/services/wheel-bearings-replacement.html)
+Silence the roar and keep your wheels rolling true. Wheel hub and bearing replacement that eliminates humming, grinding and play at the wheel.
+
+Warning signs: Humming or roaring that gets louder with speed; Noise changes pitch when you steer left or right; Grinding noise from one wheel; ABS or traction light on with a wheel speed code; Steering wheel vibration at highway speed
+
+### Strut Assembly Replacement (/services/strut-assembly-replacement.html)
+Restore the smooth, controlled ride your car was built for. Strut and shock replacement, including complete quick strut assemblies, for safe handling and comfort.
+
+Warning signs: Car bounces more than once after a bump; Nose dives when braking or squats on acceleration; Excessive body lean in turns; Cupped or uneven tire wear; Knocking over bumps or a floaty highway feel
+
+### Oxygen Sensor Replacement (/services/oxygen-sensor-replacement.html)
+Fix the check engine light and get your mileage back. O2 sensor diagnosis and replacement that restores fuel economy and clears emissions codes.
+
+Warning signs: Check engine light with an O2 sensor code; Fuel economy drops noticeably; Rough idle or hesitation; Rotten egg smell from the exhaust; Failed Drive Clean or emissions test
+
+### Battery, Alternator and Starter Check (/services/battery-alternator-starter.html)
+Start every morning with confidence. Complete starting and charging system testing: battery, alternator, starter, cables and parasitic drains.
+
+Warning signs: Slow cranking, especially on cold mornings; Clicking sound when you turn the key; Battery warning light on the dash; Lights dim at idle but brighten when you rev; Needing a boost more than once
+
+### CV Axle and Shaft Assembly Replacement (/services/cv-axle-shaft-assembly.html)
+End the clicking and get power to the wheels. CV axle replacement for clicking on turns, torn boots and vibration under acceleration.
+
+Warning signs: Clicking or popping when turning sharply; Grease splattered on the inside of the wheel or under the car; Vibration under acceleration that smooths out when coasting; Clunk when shifting into drive or reverse; Torn or cracked CV boot spotted during inspection
+
+### Ignition Coils and Spark Plugs Replacement (/services/ignition-coils-spark-plugs.html)
+Smooth idle, strong acceleration, better mileage. Spark plug and ignition coil service that cures misfires, rough idle and hesitation.
+
+Warning signs: Engine misfires, stumbles or shakes at idle; Flashing check engine light; Hesitation or lack of power on acceleration; Hard starting; Fuel economy gets worse for no clear reason
+
+### Engine and Transmission Mount Replacement (/services/engine-transmission-mount.html)
+Stop the clunk and feel the smoothness again. Motor and transmission mount replacement that eliminates clunks, vibration and harsh shifting feel.
+
+Warning signs: Clunk when shifting into drive or reverse; Vibration at idle that smooths out when driving; Engine visibly rocks when revved; Thump on acceleration or deceleration; Cracked, collapsed or leaking mounts found on inspection
+
+## Booking
+Call or text (289) 544-2727, email mustafa@apexcollisioncenter.ca, or use the booking form at /contact.html. Every repair starts with diagnosis and a written upfront quote approved by the customer.
