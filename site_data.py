@@ -6,16 +6,17 @@ SITE = {
     "short": "Apex",
     "domain": "apexcollisioncenter.ca",
     "url": "https://apexcollisioncenter.ca",
-    "phone_display": "(289) 544-2727",
-    "phone_href": "+12895442727",
+    "phone_display": "(416) 661-6665",
+    "phone_href": "+14166616665",
     "email": "mustafa@apexcollisioncenter.ca",
-    "street": "4544 Dufferin Street",
-    "city": "North York",
+    "street": "Unit 41 & 42, 4544 Dufferin Street",
+    "city": "Toronto",
+    "district": "York University Heights, North York",
     "province": "ON",
     "postal": "M3H 5X2",
-    "maps_url": "https://www.google.com/maps/search/?api=1&query=4544+Dufferin+Street+North+York+ON+M3H+5X2",
+    "maps_url": "https://www.google.com/maps/search/?api=1&query=Apex+Collision+Center+4544+Dufferin+Street+North+York",
     "tagline": "Complete car care in North York, done right the first time.",
-    "description": "Apex Collision Center is a full service auto repair shop at 4544 Dufferin Street in North York, Ontario. We handle oil changes, brakes, diagnostics, electrical, AC, suspension and engine work for all makes and models.",
+    "description": "Apex Collision Center is a full service auto repair and body shop at Unit 41 & 42, 4544 Dufferin Street in Toronto (York University Heights, North York), Ontario. We handle oil changes, brakes, diagnostics, electrical, AC, suspension, engine work, collision body repair, frame straightening, auto painting and 24/7 towing for all makes and models.",
 }
 
 HOURS = [
@@ -121,7 +122,7 @@ SERVICES = [
         "slug": "fuel-filter-replacement",
         "name": "Fuel Filter Replacement",
         "tagline": "Clean fuel delivery for smooth, efficient running.",
-        "img": "engine-repair.jpg",
+        "img": "fuel-filter.jpg",
         "card": "Fuel filter replacement that protects injectors and restores proper fuel pressure.",
         "intro": [
             "The fuel filter catches rust, dirt and debris before they reach your injectors. When it clogs, fuel pressure drops and the engine starves under load, which feels like hesitation or power loss on hills and highway merges.",
@@ -527,7 +528,7 @@ SERVICES = [
         "slug": "engine-transmission-mount",
         "name": "Engine and Transmission Mount Replacement",
         "tagline": "Stop the clunk and feel the smoothness again.",
-        "img": "shop-bays.jpg",
+        "img": "engine-mount.jpg",
         "card": "Motor and transmission mount replacement that eliminates clunks, vibration and harsh shifting feel.",
         "intro": [
             "Engine and transmission mounts hold your powertrain in place while absorbing its vibration. They are rubber and hydraulic components, and they crack, collapse and leak with age. Failed mounts let the engine rock, which you feel as clunks, vibration at idle and harsh shifts.",
@@ -550,6 +551,123 @@ SERVICES = [
             ("Can bad mounts cause other damage?", "Yes. Excess engine movement stresses exhaust flex pipes, axles, hoses and wiring. Replacing mounts early prevents those secondary failures."),
             ("Why does my car vibrate only at idle?", "At idle the engine shakes most and worn mounts cannot absorb it. Once RPM rises the shaking smooths out. Classic mount symptom."),
             ("Do all mounts need replacement at once?", "We replace the failed ones and report the condition of the rest. Mounts often fail around the same age, so we will tell you honestly what can wait."),
+        ],
+    },
+    {
+        "slug": "collision-body-work",
+        "name": "Collision Body Work",
+        "tagline": "Accident damage repaired, panels straight, lines restored.",
+        "img": "body-work.jpg",
+        "card": "Collision body repair: dent removal, panel replacement and alignment that bring your car back to factory lines.",
+        "intro": [
+            "A collision bends more than metal. Panels shift, gaps go uneven, paint cracks, and hidden brackets break behind the bumper. Proper body work restores the structure and the appearance together, not just the part you can see.",
+            "We assess the full extent of the damage, including what hides behind the panels, then repair or replace each panel and align every gap to factory spec. You get a written estimate before work starts and a car that looks right from every angle.",
+        ],
+        "signs": [
+            "Dents, creases or cracked paint from an accident or parking hit",
+            "Panels that no longer line up, with uneven gaps at doors, hood or trunk",
+            "Bumper cover that is loose, cracked or hanging",
+            "A door, hood or trunk that is hard to open or close",
+            "Paint scratched down to metal or plastic after an impact",
+        ],
+        "steps": [
+            ("Full damage assessment", "We inspect the visible damage and what hides behind it: brackets, reinforcements and mounting points."),
+            ("Written estimate", "You get a clear written estimate with parts and labour broken out before any work begins."),
+            ("Panel repair or replacement", "Dents are pulled and filled where repair is sound; panels too far gone are replaced with quality parts."),
+            ("Align and finish", "Every panel is aligned to factory gaps, then primed and prepped for paint."),
+            ("Final inspection", "We check panel gaps, operation of doors and latches, and finish quality in daylight before handover."),
+        ],
+        "faqs": [
+            ("Do you work with insurance claims?", "We provide a detailed written estimate and photos you can share with your insurer. You approve the work and the final bill is documented line by line."),
+            ("How long does body work take?", "A single panel repair is often a few days including paint. Larger collision repairs depend on parts availability. We give you a firm timeline with the estimate."),
+            ("Will the repair be noticeable?", "Our goal is invisible. Panels are aligned to factory gaps and paint is blended into adjacent panels so the repair disappears."),
+        ],
+    },
+    {
+        "slug": "frame-straightening",
+        "name": "Frame Straightening",
+        "tagline": "Bent frame, measured and pulled back to factory spec.",
+        "img": "frame-straightening.jpg",
+        "card": "Computer-measured frame straightening that restores structural alignment after a collision.",
+        "intro": [
+            "The frame is the skeleton your car is built on. Even a moderate impact can shift it by millimetres, and millimetres matter: a bent frame causes pulling, uneven tire wear, and doors that never quite close right again.",
+            "We anchor your car to a frame bench and use computerized measuring to compare every point against factory specifications, then hydraulic pulls bring it back. We re-measure after every pull and show you the before and after readings.",
+        ],
+        "signs": [
+            "Car pulls to one side after an accident",
+            "Uneven or rapid tire wear following a collision",
+            "Doors, hood or trunk that do not align after impact",
+            "Visible bending or wrinkling in frame rails or aprons",
+            "Another shop told you the frame might be bent",
+        ],
+        "steps": [
+            ("Computerized measurement", "Electronic measuring compares your frame against factory specs and maps exactly where it moved."),
+            ("Anchoring", "The car is locked to the frame bench so pulls move only the damaged area."),
+            ("Hydraulic straightening", "Controlled pulls bring each point back to specification, re-measured after every pull."),
+            ("Verification", "Final measurements confirm the frame matches factory spec before body panels go back on."),
+        ],
+        "faqs": [
+            ("Is a bent frame always repairable?", "Not always. If the measuring shows damage beyond safe repair limits, we will tell you honestly rather than take the job. Safety comes first."),
+            ("How do I know the frame is truly straight?", "We show you the computerized before and after measurements against factory specifications. Numbers, not promises."),
+            ("Does frame work affect alignment?", "Yes, which is why frame straightening comes before panel alignment and a final wheel alignment check."),
+        ],
+    },
+    {
+        "slug": "auto-painting",
+        "name": "Auto Painting",
+        "tagline": "Factory-match colour, sprayed in a controlled booth.",
+        "img": "auto-painting.jpg",
+        "card": "Professional auto painting: full resprays, panel painting and colour matching with a flawless finish.",
+        "intro": [
+            "Great paint is 90 percent preparation. Sanding, masking, priming and a dust-free booth decide whether a paint job looks factory or looks repainted. We do the slow prep work so the colour lays down flawless.",
+            "We match your factory colour code and blend into adjacent panels so repairs disappear. Full resprays, single panels, bumpers and spot repairs are all sprayed in a controlled booth and finished to a deep gloss.",
+        ],
+        "signs": [
+            "Clear coat peeling, fading or turning chalky",
+            "Scratches or chips down to primer or bare metal",
+            "Panels that do not match after a previous repair",
+            "Rust spots breaking through the paint",
+            "You want a full colour change or refresh",
+        ],
+        "steps": [
+            ("Prep and sanding", "Panels are sanded smooth, dents filled, and the surface cleaned. This step decides the final quality."),
+            ("Masking and priming", "Everything that is not painted gets masked, then primer seals the surface for adhesion."),
+            ("Colour match", "Your factory colour code is mixed and spray tested, then blended into adjacent panels for an invisible repair."),
+            ("Booth spray and cure", "Base coat and clear coat are sprayed in the booth, then cured and polished to a factory gloss."),
+        ],
+        "faqs": [
+            ("Will the new paint match the old paint?", "We mix to your factory colour code and blend into neighbouring panels, which hides the transition even on aged paint. That is how invisible repairs are done."),
+            ("How long does a paint job take?", "A single panel is typically a few days with prep and cure time. Full resprays take longer. Your estimate includes a firm timeline."),
+            ("What affects the cost of painting?", "The amount of prep work, the number of panels, and the paint type. We break it all out in the written estimate so you see exactly where the money goes."),
+        ],
+    },
+    {
+        "slug": "towing-service",
+        "name": "24/7 Towing Service",
+        "tagline": "Stranded at 2 AM? We are already rolling.",
+        "img": "towing.jpg",
+        "card": "24/7 towing across North York and the GTA. One call and a truck is on its way, day or night.",
+        "intro": [
+            "Breakdowns do not keep office hours, so neither do we. Our towing service runs 24 hours a day, 7 days a week across North York, Toronto and the surrounding GTA. One call to (416) 661-6665 and a truck is dispatched.",
+            "We tow accident vehicles, breakdowns and non-runners straight to our shop at Unit 41 & 42, 4544 Dufferin Street, where our technicians can start diagnosing immediately, or to any address you choose.",
+        ],
+        "signs": [
+            "Car broke down and will not restart",
+            "Accident damage that makes the car unsafe to drive",
+            "Flat tire with no usable spare",
+            "Overheating that forces you to stop",
+            "Any situation where driving further would cause more damage",
+        ],
+        "steps": [
+            ("Call (416) 661-6665", "Tell us where you are, what happened, and where you want the car to go."),
+            ("Truck dispatched", "The nearest available truck heads to you. We confirm the pickup location by phone."),
+            ("Safe loading", "Your car is loaded on a flatbed with proper tie-downs to prevent any transport damage."),
+            ("Delivered", "We bring it to our shop for immediate diagnosis or to the address of your choice."),
+        ],
+        "faqs": [
+            ("Do you really tow at night and on weekends?", "Yes. 24 hours a day, 7 days a week, including holidays. If your car is down, call (416) 661-6665 any time."),
+            ("Which areas do you cover?", "North York, Toronto, and the surrounding GTA including Mississauga, Scarborough, Etobicoke, Vaughan and Markham."),
+            ("Can you tow my car directly to your shop?", "Yes, and most customers do. It lands in our bays and our technicians can start the diagnosis right away."),
         ],
     },
 ]
@@ -590,7 +708,7 @@ TESTIMONIALS = [
 GLOBAL_FAQS = [
     {
         "q": "What is the best car servicing shop in North York?",
-        "a": "Drivers across North York choose Apex Collision Center for honest car servicing: real diagnosis before any quote, written upfront pricing, quality parts, and every repair road tested. Visit us at 4544 Dufferin Street, call (289) 544-2727, or book online. We service all makes and models, Monday to Saturday.",
+        "a": "Drivers across North York choose Apex Collision Center for honest car servicing: real diagnosis before any quote, written upfront pricing, quality parts, and every repair road tested. Visit us at 4544 Dufferin Street, call (416) 661-6665, or book online. We service all makes and models, Monday to Saturday.",
     },
     {
         "q": "Where is Apex Collision Center located?",
@@ -602,7 +720,7 @@ GLOBAL_FAQS = [
     },
     {
         "q": "Do I need an appointment or can I walk in?",
-        "a": "Walk ins are welcome for inspections, diagnostics and quick services like oil changes and battery checks. For bigger repairs we recommend booking ahead so we can have the parts and a lift ready for you. Call (289) 544-2727 or use the booking form.",
+        "a": "Walk ins are welcome for inspections, diagnostics and quick services like oil changes and battery checks. For bigger repairs we recommend booking ahead so we can have the parts and a lift ready for you. Call (416) 661-6665 or use the booking form.",
     },
     {
         "q": "Do you work on all makes and models?",
@@ -622,13 +740,30 @@ GLOBAL_FAQS = [
     },
     {
         "q": "How do I book a service?",
-        "a": "Call or text (289) 544-2727, email mustafa@apexcollisioncenter.ca, or fill out the booking form on our contact page. Tell us your vehicle and what it needs and we will confirm your time.",
+        "a": "Call or text (416) 661-6665, email mustafa@apexcollisioncenter.ca, or fill out the booking form on our contact page. Tell us your vehicle and what it needs and we will confirm your time.",
     },
 ]
 
 # Service area pages: nearby cities whose drivers use the North York shop.
 # Drive times are typical off-peak estimates via the 400-series highways.
 AREAS = [
+    {
+        "slug": "north-york",
+        "city": "North York",
+        "title": "Auto Repair North York | Apex Collision Center",
+        "h1": "Your North York neighbourhood repair shop",
+        "drive": "right here in North York, at Unit 41 & 42, 4544 Dufferin Street",
+        "intro": [
+            "Apex Collision Center is a North York auto repair shop through and through. Our bays are at Unit 41 & 42, 4544 Dufferin Street in the York University Heights neighbourhood, right off Highway 401 and close to Finch Avenue, with free parking at the door and a comfortable waiting area inside.",
+            "North York drivers use us for everything from oil changes and brake service to computer diagnostics, AC repair, suspension work and collision body repair. Walk ins are welcome for inspections, diagnostics, oil changes and battery checks. Larger repairs go on the schedule so the parts and a lift are ready when you arrive.",
+        ],
+        "landmarks": "On Dufferin Street between Finch Avenue and Sheppard Avenue, minutes from Highway 401, Yorkdale and the Allen Expressway.",
+        "faqs": [
+            ("Where exactly is Apex Collision Center?", "We are at Unit 41 & 42, 4544 Dufferin Street, Toronto, ON M3H 5X2, in the York University Heights area of North York. We are right off Highway 401 and close to Finch Avenue, with free parking on site."),
+            ("Do I need an appointment?", "Walk ins are welcome for inspections, diagnostics, oil changes and battery checks. For larger repairs, booking ahead at (416) 661-6665 means the parts and a lift are ready when you arrive."),
+            ("What are your hours?", "Monday to Friday 9:00 AM to 5:00 PM and Saturday 10:00 AM to 3:00 PM. Closed Sunday. Towing runs 24/7 across North York and the GTA."),
+        ],
+    },
     {
         "slug": "toronto",
         "city": "Toronto",
@@ -659,7 +794,7 @@ AREAS = [
         "landmarks": "Straight up Highway 401 east to Dufferin Street, or Highway 427 north to the 401. Free parking at the shop.",
         "faqs": [
             ("How far is Apex Collision Center from Mississauga?", "Typically about 20 to 30 minutes via Highway 401 east to Dufferin Street, depending on where in Mississauga you start and traffic."),
-            ("Do you offer the same services to Mississauga customers?", "Yes. All 18 of our services, from preventative maintenance to engine repair, are available to every customer regardless of where they drive from."),
+            ("Do you offer the same services to Mississauga customers?", "Yes. All 22 of our services, from preventative maintenance to engine repair, are available to every customer regardless of where they drive from."),
             ("Can I book a Saturday appointment from Mississauga?", "Yes. We are open Saturdays 10:00 AM to 3:00 PM, which suits drivers coming from Mississauga who cannot make it on a weekday."),
         ],
     },
@@ -688,12 +823,12 @@ AREAS = [
         "drive": "about 15 to 20 minutes via Highway 401 east or Highway 427",
         "intro": [
             "Etobicoke is one of our closest service areas: about 15 to 20 minutes via Highway 401 east or Highway 427 to Dufferin Street in North York. Close enough for an oil change on a lunch break, and worth it for honest major repairs.",
-            "Etobicoke drivers get the full Apex treatment: computer diagnostics before any quote, written upfront pricing, quality parts, and a road test on every job. All 18 services under one roof.",
+            "Etobicoke drivers get the full Apex treatment: computer diagnostics before any quote, written upfront pricing, quality parts, and a road test on every job. All 22 services under one roof.",
         ],
         "landmarks": "Highway 401 east to Dufferin Street, or Highway 427 north to the 401. Free parking right at the shop.",
         "faqs": [
             ("How close are you to Etobicoke?", "About 15 to 20 minutes from most of Etobicoke via Highway 401 east to Dufferin Street."),
-            ("Do you do same day service?", "For maintenance and diagnostics, usually yes. Call (289) 544-2727 in the morning and we will tell you honestly what fits that day."),
+            ("Do you do same day service?", "For maintenance and diagnostics, usually yes. Call (416) 661-6665 in the morning and we will tell you honestly what fits that day."),
             ("What does a diagnostic cost?", "The diagnostic fee covers the technician time to find the actual fault, and it is applied toward the repair when you approve the work with us."),
         ],
     },
@@ -732,3 +867,43 @@ AREAS = [
         ],
     },
 ]
+
+# Homepage extended FAQ. Visible text and JSON-LD must stay word for word identical.
+HOME_FAQS = [
+    ("How much does a brake job cost in North York?", "Brake cost depends on the vehicle, the condition of the pads and rotors, and whether the calipers need service. Apex Collision Center diagnoses first, then gives you a written quote with parts and labour broken out before any work starts. Call (416) 661-6665 with your year, make and model for a firm number."),
+    ("Do I need an appointment for an oil change in North York?", "Walk-ins are welcome for oil changes at Apex Collision Center on Dufferin Street, but a quick call to (416) 661-6665 saves waiting. Saturdays are busiest, so booking ahead helps."),
+    ("What should I do when my check engine light comes on?", "If the light is steady, book a diagnostic as soon as practical. If it is flashing, reduce speed and stop driving because a flashing light usually means a misfire that can damage the catalytic converter. Apex Collision Center scans the codes and tests the circuit before replacing anything."),
+    ("Do you service all makes and models?", "Yes. Apex Collision Center services and repairs all makes and models, including domestic, Asian and European vehicles, at our North York shop on Dufferin Street."),
+    ("Where are you located and is there parking?", "Apex Collision Center is at Unit 41 & 42, 4544 Dufferin Street, Toronto (York University Heights, North York), ON M3H 5X2, close to Finch Avenue and Highway 401. Free parking is available on site."),
+    ("What are your hours?", "Apex Collision Center is open Monday to Friday from 9:00 AM to 5:00 PM and Saturday from 10:00 AM to 3:00 PM. We are closed Sunday. Towing runs 24/7."),
+    ("Do you offer a written quote before starting work?", "Yes. Every repair at Apex Collision Center starts with testing and a written quote that lists parts and labour separately. Nothing begins until you approve the price."),
+    ("How do I know you diagnosed the right problem?", "We scan the computer, test the circuit by hand and confirm the failure before quoting. We save the worn parts for your inspection, give you the measurements, and road test every repair before you pay."),
+    ("Do you do AC service in the summer?", "Yes. Apex Collision Center recharges AC systems, finds leaks, and replaces compressors and components with proper evacuation and testing. Book ahead in June and July."),
+    ("My car pulls to one side. What causes that?", "Pulling can come from tire pressure, an alignment issue, a dragging brake caliper, or worn suspension parts like ball joints and control arm bushings. Apex Collision Center tests each possibility before recommending a repair."),
+    ("How often should I change my oil in Ontario?", "Follow the interval in your owner's manual. For most modern vehicles on full synthetic oil that is roughly every 8,000 to 12,000 kilometres or once a year, whichever comes first. Short city trips and cold Ontario starts shorten that."),
+    ("Do you offer Saturday appointments?", "Yes. Apex Collision Center is open Saturday from 10:00 AM to 3:00 PM. Call (416) 661-6665 to reserve a spot, especially for a repair that needs a lift."),
+    ("Can you do a pre-purchase inspection?", "Yes. A pre-purchase inspection at Apex Collision Center covers the engine, transmission, brakes, suspension, tires, fluids, electronics and a road test, with a written summary of what we found. Call (416) 661-6665 to book."),
+    ("Do you sell tires or do alignments?", "Tire sales and alignments are handled by our partner shops. Apex Collision Center focuses on mechanical repair, diagnostics, brakes, suspension, AC and maintenance. Call (416) 661-6665 and we will point you to a trusted partner."),
+    ("How do I book a repair?", "Call (416) 661-6665 or book online at apexcollisioncenter.ca/contact.html. Tell us your vehicle, the symptom and when it happens, and we will find a time and a bay."),
+    ("Do you work on hybrid and electric vehicles?", "Apex Collision Center services brakes, suspension, tires and general maintenance on most hybrids. High-voltage battery and drive unit work is referred to a specialist. Call (416) 661-6665 with your model to confirm."),
+]
+
+AREAS.append(
+    {
+        "slug": "downtown-toronto",
+        "city": "Downtown Toronto",
+        "title": "Downtown Toronto Auto Repair | Apex Collision Center",
+        "h1": "Car servicing for Downtown Toronto drivers",
+        "drive": "about 25 to 45 minutes via Allen Road north to Highway 401, then Dufferin Street",
+        "intro": [
+            "Apex Collision Center is a North York auto repair shop at Unit 41 & 42, 4544 Dufferin Street, reached from Downtown Toronto by Allen Road north to Highway 401 and then Dufferin Street. We diagnose before we quote, give you a written price, and road test every repair. We are open Saturdays, 10:00 AM to 3:00 PM.",
+        ],
+        "landmarks": "Allen Road north to Highway 401, then Dufferin Street. Close to Finch Avenue, with free parking at the shop.",
+        "faqs": [
+            ("How far is Apex Collision Center from Downtown Toronto?", "Most drivers take Allen Road north to Highway 401 and then Dufferin Street. Allow roughly 25 to 45 minutes depending on traffic and where downtown you start. Saturday mornings are usually the easiest run."),
+            ("Do you take Saturday appointments for Downtown Toronto drivers?", "Yes. We are open Saturday from 10:00 AM to 3:00 PM, and Monday to Friday from 9:00 AM to 5:00 PM. Call (416) 661-6665 to reserve a time, especially for repairs that need a lift."),
+            ("My car barely gets driven. Does it still need servicing?", "Yes. Oil, brake fluid and tires age with time as well as distance, and short trips and long sits are hard on batteries. A low-mileage car should still get an annual inspection and an oil change on the schedule in its owner's manual."),
+            ("What should I bring to my appointment?", "Bring the vehicle, any warning-light or noise details you can describe, and your service history if you have it. Tell us when the problem happens, such as cold starts, braking or turning, because that shortens diagnosis."),
+        ],
+    }
+)

@@ -360,6 +360,44 @@ p { margin: 0 0 1em; }
 .section-dark .area-pill { background: rgba(255,255,255,0.08); color: #fff; border-color: rgba(255,255,255,0.2); }
 .section-dark .area-pill:hover { background: var(--blue-600); }
 
+/* ---------- Brand marquee (We Work With) ---------- */
+.brand-strip { padding: clamp(2.5rem, 5vw, 3.5rem) 0 2rem; text-align: center; background: #fff; }
+.brand-title { font-size: clamp(1.7rem, 3.4vw, 2.4rem); margin-bottom: 0.3rem; }
+.brand-sub { color: var(--muted); margin-bottom: 1.6rem; }
+.marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.marquee-track { display: flex; width: max-content; animation: marquee-scroll 46s linear infinite; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+.marquee-group { display: flex; align-items: center; }
+.brand-logo {
+  height: 46px; width: auto; max-width: 150px; object-fit: contain;
+  padding: 0.35rem 1.7rem;
+  filter: grayscale(1); opacity: 0.72;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+.brand-logo:hover { filter: none; opacity: 1; }
+@keyframes marquee-scroll { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
+
+/* ---------- Symptom cards with images ---------- */
+.apx-symptom img {
+  border-radius: 10px; margin-bottom: 0.9rem;
+  aspect-ratio: 16/10; object-fit: cover; width: 100%;
+}
+
+/* ---------- Castrol warranty section ---------- */
+.castrol-grid { display: grid; grid-template-columns: 300px 1fr; gap: clamp(1.5rem, 4vw, 3rem); align-items: center; }
+.castrol-badge { width: 100%; max-width: 300px; border-radius: 18px; box-shadow: var(--shadow); }
+@media (max-width: 760px) {
+  .castrol-grid { grid-template-columns: 1fr; }
+  .castrol-badge { max-width: 220px; margin: 0 auto; }
+}
+
 /* ---------- Misc ---------- */
 .tag-row { display: flex; flex-wrap: wrap; gap: 0.55rem; margin: 1rem 0; }
 .tag { background: var(--silver-100); color: var(--navy-800); font-size: 0.82rem; font-weight: 700; padding: 0.32rem 0.8rem; border-radius: 999px; }

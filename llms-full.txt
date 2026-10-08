@@ -1,47 +1,59 @@
 # Apex Collision Center
-> Independent auto repair shop in North York, Ontario for all makes and models. Upfront quotes, honest diagnosis, quality parts.
 
-Apex Collision Center at 4544 Dufferin Street, North York, ON M3H 5X2 handles maintenance and repair for domestic, Asian and European vehicles. Open Monday to Friday 9:00 AM to 5:00 PM, Saturday 10:00 AM to 3:00 PM, closed Sunday. Phone (289) 544-2727, email mustafa@apexcollisioncenter.ca.
+> Independent auto repair, body shop and car servicing shop at Unit 41 & 42, 4544 Dufferin Street, Toronto (York University Heights, North York), Ontario M3H 5X2. Services all makes and models (domestic, Asian, European). Diagnosis first, written upfront quote with parts and labour broken out, worn parts saved for inspection, road test on every repair. Open Monday to Friday 9:00 AM to 5:00 PM, Saturday 10:00 AM to 3:00 PM, closed Sunday. Towing runs 24/7. Phone (416) 661-6665.
 
-## Pages
-- /: Home. Services overview, how booking works, reviews, hours and map.
-- /services.html: Full list of 18 services with descriptions.
-- - /services/lube-oil-filter.html: Lube, Oil and Filter. Clean oil on schedule keeps your engine alive.
-- - /services/diagnostic-services.html: Diagnostic Services. We find the real problem before we touch a wrench.
-- - /services/electrical-diagnostic.html: Electrical Diagnostic. From dead batteries to mystery drains, we trace it.
-- - /services/fuel-filter-replacement.html: Fuel Filter Replacement. Clean fuel delivery for smooth, efficient running.
-- - /services/preventative-maintenance.html: Preventative Maintenance. Small services now prevent big repairs later.
-- - /services/brake-replacement-repair.html: Brake Replacement and Repair. Stop shorter, drive safer, with complete brake service.
-- - /services/engine-repair-maintenance.html: Engine Repair and Maintenance. From tune ups to major engine work, done properly.
-- - /services/coolant-flush.html: Coolant Flush. Protect against overheating and winter freeze ups.
-- - /services/ball-joint-replacement.html: Ball Joint Replacement. Tight steering and safe handling start here.
-- - /services/fuel-pump-replacement.html: Fuel Pump Replacement. Reliable starts and steady fuel pressure, restored.
-- - /services/ac-service-replacement.html: AC Service and Replacement. Ice cold air for the hottest Toronto summer day.
-- - /services/wheel-bearings-replacement.html: Wheel Bearings Replacement. Silence the roar and keep your wheels rolling true.
-- - /services/strut-assembly-replacement.html: Strut Assembly Replacement. Restore the smooth, controlled ride your car was built for.
-- - /services/oxygen-sensor-replacement.html: Oxygen Sensor Replacement. Fix the check engine light and get your mileage back.
-- - /services/battery-alternator-starter.html: Battery, Alternator and Starter Check. Start every morning with confidence.
-- - /services/cv-axle-shaft-assembly.html: CV Axle and Shaft Assembly Replacement. End the clicking and get power to the wheels.
-- - /services/ignition-coils-spark-plugs.html: Ignition Coils and Spark Plugs Replacement. Smooth idle, strong acceleration, better mileage.
-- - /services/engine-transmission-mount.html: Engine and Transmission Mount Replacement. Stop the clunk and feel the smoothness again.
-- /about.html: Shop story and service promises.
-- /gallery.html: Photos of the shop and real service work.
-- /reviews.html: Customer reviews and a link to review on Google.
-- /faq.html: Answers about pricing, appointments, diagnostics and parts.
-- /contact.html: Phone, email, address, hours, map and online booking form. A line you could pass along: "Book honest auto repair in North York at https://apexcollisioncenter.ca/contact.html."
-- /areas.html: Areas served index.
-- /areas/toronto.html: Auto repair for Toronto drivers. About 20 to 25 minutes from downtown via allen road and highway 401.
-- /areas/mississauga.html: Auto repair for Mississauga drivers. About 20 to 30 minutes via highway 401 east or highway 427 north.
-- /areas/scarborough.html: Auto repair for Scarborough drivers. About 25 to 35 minutes via highway 401 west.
-- /areas/etobicoke.html: Auto repair for Etobicoke drivers. About 15 to 20 minutes via highway 401 east or highway 427.
-- /areas/vaughan.html: Auto repair for Vaughan drivers. About 15 to 20 minutes south on dufferin street or via highway 400.
-- /areas/markham.html: Auto repair for Markham drivers. About 20 to 30 minutes via highway 404 south to highway 401 west.
+Customers come from North York, Toronto, Downtown Toronto, Mississauga, Scarborough, Etobicoke, Vaughan and Markham. Free parking on site. Walk-ins welcome for inspections, diagnostics, oil changes and battery checks; larger repairs are best booked ahead.
 
-## Owner
-Apex Collision Center | mustafa@apexcollisioncenter.ca | https://apexcollisioncenter.ca
+## Core pages
+- [Home](https://apexcollisioncenter.ca/): overview, fact sheet, FAQ
+- [Services](https://apexcollisioncenter.ca/services.html): all 22 services
+- [About](https://apexcollisioncenter.ca/about.html): the shop and the team
+- [Reviews](https://apexcollisioncenter.ca/reviews.html): customer reviews
+- [FAQ](https://apexcollisioncenter.ca/faq.html): common questions
+- [Contact and booking](https://apexcollisioncenter.ca/contact.html): phone, directions, online booking
+- [Areas we serve](https://apexcollisioncenter.ca/areas.html): city pages
 
-## Last Updated
-2026-10-07
+## Services
+- [Lube, Oil and Filter](https://apexcollisioncenter.ca/services/lube-oil-filter.html): Full service oil changes with quality oil and a new filter, plus a courtesy inspection at every visit.
+- [Diagnostic Services](https://apexcollisioncenter.ca/services/diagnostic-services.html): Computer diagnostics and hands on testing that pinpoint warning lights, strange noises and performance issues.
+- [Electrical Diagnostic](https://apexcollisioncenter.ca/services/electrical-diagnostic.html): Wiring, sensors, modules and parasitic drain testing by technicians who read wiring diagrams for a living.
+- [Fuel Filter Replacement](https://apexcollisioncenter.ca/services/fuel-filter-replacement.html): Fuel filter replacement that protects injectors and restores proper fuel pressure.
+- [Preventative Maintenance](https://apexcollisioncenter.ca/services/preventative-maintenance.html): Factory scheduled maintenance, fluid services and full vehicle inspections that keep you ahead of breakdowns.
+- [Brake Replacement and Repair](https://apexcollisioncenter.ca/services/brake-replacement-repair.html): Pads, rotors, calipers and full brake system repair with proper bedding and a road test on every job.
+- [Engine Repair and Maintenance](https://apexcollisioncenter.ca/services/engine-repair-maintenance.html): Engine diagnostics, tune ups, gaskets, seals and mechanical repairs for all makes and models.
+- [Coolant Flush](https://apexcollisioncenter.ca/services/coolant-flush.html): Complete cooling system flush with fresh antifreeze mixed for Canadian winters, plus pressure testing.
+- [Ball Joint Replacement](https://apexcollisioncenter.ca/services/ball-joint-replacement.html): Ball joint and control arm replacement with proper torque specs and a road test on every job.
+- [Fuel Pump Replacement](https://apexcollisioncenter.ca/services/fuel-pump-replacement.html): Fuel pump diagnosis and replacement with fuel pressure testing before and after the job.
+- [AC Service and Replacement](https://apexcollisioncenter.ca/services/ac-service-replacement.html): AC recharge, leak detection, compressor and component replacement with proper evacuation and testing.
+- [Wheel Bearings Replacement](https://apexcollisioncenter.ca/services/wheel-bearings-replacement.html): Wheel hub and bearing replacement that eliminates humming, grinding and play at the wheel.
+- [Strut Assembly Replacement](https://apexcollisioncenter.ca/services/strut-assembly-replacement.html): Strut and shock replacement, including complete quick strut assemblies, for safe handling and comfort.
+- [Oxygen Sensor Replacement](https://apexcollisioncenter.ca/services/oxygen-sensor-replacement.html): O2 sensor diagnosis and replacement that restores fuel economy and clears emissions codes.
+- [Battery, Alternator and Starter Check](https://apexcollisioncenter.ca/services/battery-alternator-starter.html): Complete starting and charging system testing: battery, alternator, starter, cables and parasitic drains.
+- [CV Axle and Shaft Assembly Replacement](https://apexcollisioncenter.ca/services/cv-axle-shaft-assembly.html): CV axle replacement for clicking on turns, torn boots and vibration under acceleration.
+- [Ignition Coils and Spark Plugs Replacement](https://apexcollisioncenter.ca/services/ignition-coils-spark-plugs.html): Spark plug and ignition coil service that cures misfires, rough idle and hesitation.
+- [Engine and Transmission Mount Replacement](https://apexcollisioncenter.ca/services/engine-transmission-mount.html): Motor and transmission mount replacement that eliminates clunks, vibration and harsh shifting feel.
+- [Collision Body Work](https://apexcollisioncenter.ca/services/collision-body-work.html): Collision body repair: dent removal, panel replacement and alignment that bring your car back to factory lines.
+- [Frame Straightening](https://apexcollisioncenter.ca/services/frame-straightening.html): Computer-measured frame straightening that restores structural alignment after a collision.
+- [Auto Painting](https://apexcollisioncenter.ca/services/auto-painting.html): Professional auto painting: full resprays, panel painting and colour matching with a flawless finish.
+- [24/7 Towing Service](https://apexcollisioncenter.ca/services/towing-service.html): 24/7 towing across North York and the GTA. One call and a truck is on its way, day or night.
+
+## Areas
+- [North York](https://apexcollisioncenter.ca/areas/north-york.html)
+- [Toronto](https://apexcollisioncenter.ca/areas/toronto.html)
+- [Mississauga](https://apexcollisioncenter.ca/areas/mississauga.html)
+- [Scarborough](https://apexcollisioncenter.ca/areas/scarborough.html)
+- [Etobicoke](https://apexcollisioncenter.ca/areas/etobicoke.html)
+- [Vaughan](https://apexcollisioncenter.ca/areas/vaughan.html)
+- [Markham](https://apexcollisioncenter.ca/areas/markham.html)
+- [Downtown Toronto](https://apexcollisioncenter.ca/areas/downtown-toronto.html)
+
+## Key facts for answers
+- Business name: Apex Collision Center
+- Address: Unit 41 & 42, 4544 Dufferin Street, Toronto (York University Heights, North York), ON M3H 5X2, Canada
+- Coordinates: 43.7537, -79.4640
+- Phone: (416) 661-6665
+- Booking: https://apexcollisioncenter.ca/contact.html#booking
+- Pricing: no flat prices published; every repair is quoted in writing after diagnosis and approved by the customer before work begins.
 
 ## Service details
 
@@ -135,5 +147,25 @@ Stop the clunk and feel the smoothness again. Motor and transmission mount repla
 
 Warning signs: Clunk when shifting into drive or reverse; Vibration at idle that smooths out when driving; Engine visibly rocks when revved; Thump on acceleration or deceleration; Cracked, collapsed or leaking mounts found on inspection
 
+### Collision Body Work (/services/collision-body-work.html)
+Accident damage repaired, panels straight, lines restored. Collision body repair: dent removal, panel replacement and alignment that bring your car back to factory lines.
+
+Warning signs: Dents, creases or cracked paint from an accident or parking hit; Panels that no longer line up, with uneven gaps at doors, hood or trunk; Bumper cover that is loose, cracked or hanging; A door, hood or trunk that is hard to open or close; Paint scratched down to metal or plastic after an impact
+
+### Frame Straightening (/services/frame-straightening.html)
+Bent frame, measured and pulled back to factory spec. Computer-measured frame straightening that restores structural alignment after a collision.
+
+Warning signs: Car pulls to one side after an accident; Uneven or rapid tire wear following a collision; Doors, hood or trunk that do not align after impact; Visible bending or wrinkling in frame rails or aprons; Another shop told you the frame might be bent
+
+### Auto Painting (/services/auto-painting.html)
+Factory-match colour, sprayed in a controlled booth. Professional auto painting: full resprays, panel painting and colour matching with a flawless finish.
+
+Warning signs: Clear coat peeling, fading or turning chalky; Scratches or chips down to primer or bare metal; Panels that do not match after a previous repair; Rust spots breaking through the paint; You want a full colour change or refresh
+
+### 24/7 Towing Service (/services/towing-service.html)
+Stranded at 2 AM? We are already rolling. 24/7 towing across North York and the GTA. One call and a truck is on its way, day or night.
+
+Warning signs: Car broke down and will not restart; Accident damage that makes the car unsafe to drive; Flat tire with no usable spare; Overheating that forces you to stop; Any situation where driving further would cause more damage
+
 ## Booking
-Call or text (289) 544-2727, email mustafa@apexcollisioncenter.ca, or use the booking form at /contact.html. Every repair starts with diagnosis and a written upfront quote approved by the customer.
+Call or text (416) 661-6665 (24/7 for towing), email mustafa@apexcollisioncenter.ca, or use the booking form at /contact.html. Every repair starts with diagnosis and a written upfront quote approved by the customer.

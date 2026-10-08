@@ -4,10 +4,16 @@
 import os
 import json
 from site_data import SITE, HOURS, SERVICES, TESTIMONIALS, GLOBAL_FAQS, AREAS
+from area_extras import AREA_EXTRAS
+from service_extras import SERVICE_EXTRAS
+from seo_upgrade import (home_graph, page_graph, simple_webpage_graph, ld_script,
+                         home_sections, TRACKING_SCRIPT, robots_txt, llms_txt,
+                         webmanifest, TODAY, SERVICE_TYPES)
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-GEO_LAT, GEO_LON = "43.76642", "-79.46723"
+GEO_LAT, GEO_LON = "43.7537", "-79.4640"
 ADDR = f"{SITE['street']}, {SITE['city']}, {SITE['province']} {SITE['postal']}"
+ADDR_LONG = "Unit 41 & 42, 4544 Dufferin Street, Toronto (York University Heights, North York), ON M3H 5X2"
 
 
 def esc(s):
@@ -17,16 +23,23 @@ def esc(s):
 DEFAULT_KEYWORDS = ("car servicing North York, auto repair North York, mechanic North York, "
     "car repair North York, auto shop North York, oil change North York, brake repair North York, "
     "car diagnostic North York, auto repair Toronto, car mechanic Toronto, auto repair Ontario, "
-    "best car servicing shop in North York")
+    "best car servicing shop in North York, collision body work North York, auto painting North York, "
+    "frame straightening North York, 24/7 towing North York, towing service Toronto")
 
 
-def head(title, desc, path, rel, og_img="assets/img/hero.jpg", jsonld=None, keywords=None):
-    canon = SITE["url"] + "/" + path
+def head(title, desc, path, rel, og_img="assets/img/hero.jpg", jsonld=None, keywords=None,
+         og_alt=None, is_home=False):
+    canon = SITE["url"] + "/" if path in ("index.html", "") else SITE["url"] + "/" + path
     og = SITE["url"] + "/" + og_img
     ld = ""
     if jsonld:
         ld = '\n<script type="application/ld+json">\n' + json.dumps(jsonld, indent=2) + '\n</script>'
     kw = esc(keywords or DEFAULT_KEYWORDS)
+    og_alt_t = esc(og_alt or f"{SITE['name']} in North York, Ontario")
+    hreflang = (f'<link rel="alternate" hreflang="en-CA" href="{canon}">\n'
+                f'<link rel="alternate" hreflang="x-default" href="{canon}">\n') if is_home else ""
+    preload = (f'<link rel="preload" as="image" href="{rel}assets/img/hero.jpg" fetchpriority="high">\n'
+               f'<link rel="preconnect" href="https://www.google.com">\n') if is_home else ""
     return f"""<!DOCTYPE html>
 <html lang="en-CA">
 <head>
@@ -35,25 +48,45 @@ def head(title, desc, path, rel, og_img="assets/img/hero.jpg", jsonld=None, keyw
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}">
 <meta name="keywords" content="{kw}">
+{hreflang}<link rel="canonical" href="{canon}">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="author" content="{esc(SITE['name'])}">
 <meta name="theme-color" content="#0b1e3a">
+<meta name="format-detection" content="telephone=yes">
 <meta name="geo.region" content="CA-ON">
 <meta name="geo.placename" content="North York, Toronto, Ontario, Canada">
 <meta name="geo.position" content="{GEO_LAT};{GEO_LON}">
 <meta name="ICBM" content="{GEO_LAT}, {GEO_LON}">
-<link rel="canonical" href="{canon}">
-<meta name="robots" content="index, follow, max-image-preview:large">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="{esc(SITE['name'])}">
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(desc)}">
 <meta property="og:url" content="{canon}">
 <meta property="og:image" content="{og}">
+<meta property="og:image:secure_url" content="{og}">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{og_alt_t}">
 <meta property="og:locale" content="en_CA">
+<meta property="business:contact_data:street_address" content="Unit 41 &amp; 42, 4544 Dufferin Street">
+<meta property="business:contact_data:locality" content="Toronto">
+<meta property="business:contact_data:region" content="ON">
+<meta property="business:contact_data:postal_code" content="M3H 5X2">
+<meta property="business:contact_data:country_name" content="Canada">
+<meta property="business:contact_data:phone_number" content="{SITE['phone_href']}">
+<meta property="place:location:latitude" content="{GEO_LAT}">
+<meta property="place:location:longitude" content="{GEO_LON}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{esc(title)}">
 <meta name="twitter:description" content="{esc(desc)}">
 <meta name="twitter:image" content="{og}">
+<meta name="twitter:image:alt" content="{og_alt_t}">
+{preload}<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="sitemap" type="application/xml" title="Sitemap" href="{rel}sitemap.xml">
+<link rel="alternate" type="text/plain" title="LLM-readable summary" href="{rel}llms.txt">
+<link rel="manifest" href="{rel}site.webmanifest">
 <link rel="icon" href="{rel}assets/img/favicon.ico" sizes="any">
 <link rel="icon" href="{rel}assets/img/favicon-32.png" type="image/png">
 <link rel="apple-touch-icon" href="{rel}assets/img/apple-touch-icon.png">
@@ -68,7 +101,7 @@ def head(title, desc, path, rel, og_img="assets/img/hero.jpg", jsonld=None, keyw
 def topbar():
     return f"""<div class="topbar">
   <div class="container">
-    <span class="hours-note"><span id="open-badge"><span class="dot"></span> <span class="open-text">Open now</span></span> &nbsp;Mon-Fri 9-5 &nbsp; Sat 10-3 &nbsp; Sun closed</span>
+    <span class="hours-note"><span id="open-badge"><span class="dot"></span> <span class="open-text">Open now</span></span> &nbsp;Mon-Fri 9-5 &nbsp; Sat 10-3 &nbsp; Sun closed &nbsp;·&nbsp; <strong style="color:#fff;">24/7 towing</strong></span>
     <span><a href="tel:{SITE['phone_href']}">{SITE['phone_display']}</a> &nbsp;·&nbsp; <a href="mailto:{SITE['email']}">{SITE['email']}</a></span>
   </div>
 </div>"""
@@ -104,7 +137,7 @@ def site_header(active, rel):
 </header>"""
 
 
-def footer(rel):
+def footer(rel, extra_body=""):
     svc_links = "".join(
         f'<li><a href="{rel}services/{s["slug"]}.html">{esc(s["name"])}</a></li>'
         for s in SERVICES[:8]
@@ -152,7 +185,7 @@ def footer(rel):
   <span aria-hidden="true">&#9742;</span> Call {SITE['phone_display']}
 </a>
 <script src="{rel}assets/js/main.js"></script>
-</body>
+{extra_body}</body>
 </html>"""
 
 
@@ -337,22 +370,22 @@ def build_index():
       <p>&ldquo;{esc(t['text'])}&rdquo;</p><footer><strong>{esc(t['name'])}</strong>{esc(t['area'])}</footer></div>"""
         for t in TESTIMONIALS[:3]
     )
-    ld = auto_repair_jsonld()
-    ld["makesOffer"] = [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": s["name"]}} for s in SERVICES]
-    ld = [ld, breadcrumb_jsonld([("Home", "")]),
-          speakable_jsonld(SITE["url"] + "/index.html", [".hero h1", ".hero .lede"])]
-    body = f"""{head("Auto Repair North York | Apex Collision Center",
-        "North York auto repair: oil changes, brakes, diagnostics, AC, suspension and engine work at Apex Collision Center. Upfront pricing, all makes and models.",
-        "index.html", rel, jsonld=ld)}
+    graph = home_graph()
+    ld_html = ld_script(graph)
+    body = f"""{head("Car Servicing & Auto Repair North York | Apex Collision Center",
+        "Car servicing and auto repair in North York at 4544 Dufferin St. Brakes, oil, diagnostics, AC, body work, painting, 24/7 towing. (416) 661-6665.",
+        "index.html", rel, jsonld=None, is_home=True,
+        og_alt="Apex Collision Center storefront on Dufferin Street in North York at dusk")}
+{ld_html}
 {site_header("home", rel)}
 <main>
 <section class="hero">
-  <div class="hero-bg"><img src="{rel}assets/img/hero.jpg" alt="Apex Collision Center, the best car servicing shop in North York, at dusk" fetchpriority="high"></div>
+  <div class="hero-bg"><img src="{rel}assets/img/hero.jpg" alt="Apex Collision Center storefront on Dufferin Street, North York, at dusk" fetchpriority="high"></div>
   <div class="hero-shade"></div>
   <div class="container hero-inner">
-    <span class="eyebrow" style="color:var(--blue-300);">North York Auto Repair</span>
-    <h1>Car trouble ends at <span class="accent">the Apex</span></h1>
-    <p class="lede">From oil changes to engine repair, our technicians diagnose the real problem, quote you an upfront price, and fix it right the first time. All makes and models welcome.</p>
+    <p class="eyebrow" style="color:var(--blue-300);">North York Auto Repair</p>
+    <h1>Car Servicing and Auto Repair in North York</h1>
+    <p class="lede"><strong>Car trouble ends at the Apex.</strong> Our technicians diagnose the real problem, quote you an upfront price in writing, and fix it right the first time. All makes and models welcome. 24/7 towing at {SITE['phone_display']}.</p>
     <div class="btn-row">
       <a class="btn btn-primary" href="tel:{SITE['phone_href']}">Call {SITE['phone_display']}</a>
       <a class="btn btn-ghost-light" href="{rel}contact.html#booking">Book Service Online</a>
@@ -360,16 +393,18 @@ def build_index():
     <div class="hero-badges">
       <span class="hero-badge">Upfront written quotes</span>
       <span class="hero-badge">All makes and models</span>
-      <span class="hero-badge">Quality parts</span>
-      <span class="hero-badge">Road tested every job</span>
+      <span class="hero-badge">Body shop and painting</span>
+      <span class="hero-badge">24/7 towing</span>
     </div>
     <div class="hero-card-row">
-      <div class="hero-card"><strong>18 Services</strong><span>Maintenance, brakes, diagnostics, electrical, AC, suspension and engine work under one roof.</span></div>
-      <div class="hero-card"><strong>Open 6 Days</strong><span>Monday to Friday 9 to 5, Saturday 10 to 3, right on Dufferin Street.</span></div>
-      <div class="hero-card"><strong>{esc(ADDR)}</strong><span>Easy to reach from the 401, with free parking at the shop.</span></div>
+      <div class="hero-card"><strong>22 Services</strong><span>Maintenance, brakes, diagnostics, electrical, AC, suspension, engine, body work, painting and 24/7 towing under one roof.</span></div>
+      <div class="hero-card"><strong>Open 6 Days</strong><span>Monday to Friday 9 to 5, Saturday 10 to 3, right on Dufferin Street. Towing runs 24/7.</span></div>
+      <div class="hero-card"><strong>{esc(ADDR_LONG)}</strong><span>Easy to reach from the 401, with free parking at the shop.</span></div>
     </div>
   </div>
 </section>
+
+{home_sections()}
 
 <section class="section">
   <div class="container">
@@ -483,7 +518,7 @@ def build_index():
 
 <section class="section"><div>{cta_band(rel)}</div></section>
 </main>
-{footer(rel)}"""
+{footer(rel, TRACKING_SCRIPT)}"""
     write("index.html", body)
 
 
@@ -500,10 +535,15 @@ def build_about():
         f'<div class="card reveal"><div class="card-icon" aria-hidden="true">✓</div><h3>{t}</h3><p>{d}</p></div>'
         for t, d in values
     )
-    ld = [breadcrumb_jsonld([("Home", ""), ("About", "about.html")]), auto_repair_jsonld()]
-    body = f"""{head("About Our North York Auto Shop | Apex Collision Center",
-        "Meet Apex Collision Center: an independent North York auto repair shop built on honest diagnosis, upfront pricing and repairs verified on the road.",
-        "about.html", rel, og_img="assets/img/about-shop.jpg", jsonld=ld)}
+    page_url = SITE["url"] + "/about.html"
+    ld_html = ld_script(simple_webpage_graph(page_url,
+        "About Apex Collision Center | North York Auto Repair Shop",
+        "Meet the team behind Apex Collision Center, an independent auto repair shop on Dufferin Street in North York."))
+    body = f"""{head("About Apex Collision Center | North York Auto Repair Shop",
+        "Meet the team behind Apex Collision Center, an independent auto repair shop on Dufferin Street in North York. Diagnosis first, written quotes, road tested repairs.",
+        "about.html", rel, og_img="assets/img/about-shop.jpg", jsonld=None,
+        og_alt="The team at Apex Collision Center in North York")}
+{ld_html}
 {site_header("about", rel)}
 <main>
 {page_hero(rel, '<a href="index.html">Home</a> &rsaquo; About', "The shop North York can trust", "An independent auto repair shop built on a simple idea: diagnose honestly, price upfront, and fix it right the first time.", "assets/img/about-shop.jpg")}
@@ -547,7 +587,7 @@ def build_about():
 </section>
 <section class="section section-dark">
   <div class="container stats reveal">
-    <div class="stat"><div class="stat-num">18</div><div class="stat-label">Services offered</div></div>
+    <div class="stat"><div class="stat-num">22</div><div class="stat-label">Services offered</div></div>
     <div class="stat"><div class="stat-num">6</div><div class="stat-label">Days open weekly</div></div>
     <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Upfront quotes</div></div>
     <div class="stat"><div class="stat-num">All</div><div class="stat-label">Makes and models</div></div>
@@ -563,16 +603,22 @@ def build_about():
 def build_services():
     rel = ""
     cards = "".join(service_card(s, rel) for s in SERVICES)
-    ld = [breadcrumb_jsonld([("Home", ""), ("Services", "services.html")]),
-          {"@context": "https://schema.org", "@type": "ItemList",
-           "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": s["name"],
-                                "url": SITE["url"] + "/services/" + s["slug"] + ".html"} for i, s in enumerate(SERVICES)]}]
-    body = f"""{head("Car Services in North York | Apex Collision Center",
-        "Explore all 18 auto repair services at Apex Collision Center in North York: oil changes, brakes, diagnostics, electrical, AC, suspension, engine work and more.",
-        "services.html", rel, og_img="assets/img/shop-bays.jpg", jsonld=ld)}
+    page_url = SITE["url"] + "/services.html"
+    graph = simple_webpage_graph(page_url, "Auto Repair Services in North York | Apex Collision Center",
+        "All 22 auto repair and car servicing options at Apex Collision Center in North York.")
+    graph["@graph"].append(
+        {"@type": "ItemList",
+         "itemListElement": [{"@type": "ListItem", "position": i + 1, "name": s["name"],
+                              "url": SITE["url"] + "/services/" + s["slug"] + ".html"} for i, s in enumerate(SERVICES)]})
+    ld_html = ld_script(graph)
+    body = f"""{head("Auto Repair Services in North York | Apex Collision Center",
+        "All 22 auto repair services in North York: brakes, oil, diagnostics, AC, body work, painting, 24/7 towing at Apex Collision Center. (416) 661-6665.",
+        "services.html", rel, og_img="assets/img/shop-bays.jpg", jsonld=None,
+        og_alt="Service bays at Apex Collision Center in North York")}
+{ld_html}
 {site_header("services", rel)}
 <main>
-{page_hero(rel, '<a href="index.html">Home</a> &rsaquo; Services', "Every service, one standard", "Eighteen services, one way of working: diagnose the real fault, quote upfront, repair with quality parts, and verify on the road.", "assets/img/shop-bays.jpg")}
+{page_hero(rel, '<a href="index.html">Home</a> &rsaquo; Services', "Every service, one standard", "Twenty-two services, one way of working: diagnose the real fault, quote upfront, repair with quality parts, and verify on the road.", "assets/img/shop-bays.jpg")}
 <section class="section">
   <div class="container">
     <div class="section-head reveal">
@@ -605,37 +651,65 @@ def build_services():
 
 # ============================ SERVICE DETAIL ============================
 def build_service_detail(s, idx):
+    s = {**s, **SERVICE_EXTRAS.get(s["slug"], {})}
     rel = "../"
     path = f"services/{s['slug']}.html"
     signs = "".join(f"<li>{esc(x)}</li>" for x in s["signs"])
+    included = "".join(f"<li>{esc(x)}</li>" for x in s.get("included", []))
+    extras_html = ""
+    if s.get("included"):
+        extras_html = f"""<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">The fine print, up front</span>
+      <h2>What is included, how long it takes, how we price it</h2>
+    </div>
+    <div class="grid grid-3">
+      <div class="card reveal">
+        <h3>What is included</h3>
+        <ul class="checklist">{included}</ul>
+      </div>
+      <div class="card reveal">
+        <h3>How long it takes</h3>
+        <p>{esc(s.get('duration', ''))}</p>
+      </div>
+      <div class="card reveal">
+        <h3>How pricing works</h3>
+        <p>{esc(s.get('price_note', ''))}</p>
+      </div>
+    </div>
+  </div>
+</section>"""
     steps = "".join(
         f'<div class="step reveal"><div class="step-num" aria-hidden="true"></div><div><h3>{esc(t)}</h3><p>{esc(d)}</p></div></div>'
         for t, d in s["steps"]
     )
     related = [SERVICES[(idx + i) % len(SERVICES)] for i in (1, 2, 3)]
     rel_html = "".join(service_card(r, rel) for r in related)
-    ld = [
-        {"@context": "https://schema.org", "@type": "Service", "name": s["name"],
-         "description": s["card"],
-         "provider": {"@type": "AutoRepair", "name": SITE["name"], "telephone": SITE["phone_display"],
-                      "address": {"@type": "PostalAddress", "streetAddress": SITE["street"],
-                                  "addressLocality": SITE["city"], "addressRegion": SITE["province"],
-                                  "postalCode": SITE["postal"], "addressCountry": "CA"}},
-         "areaServed": [{"@type": "City", "name": a["city"], "containedInPlace": {"@type": "State", "name": "Ontario"}} for a in AREAS] + [{"@type": "State", "name": "Ontario"}],
-         "url": SITE["url"] + "/" + path},
-        breadcrumb_jsonld([("Home", ""), ("Services", "services.html"), (s["name"], path)]),
-        faq_jsonld(s["faqs"]),
-        speakable_jsonld(SITE["url"] + "/" + path, [".page-hero h1", ".page-hero .lede"]),
-    ]
-    title = f"{s['name']} | Apex Collision Center"
+    page_url = SITE["url"] + "/" + path
+    graph = page_graph(page_url, f"{s['name']} | Apex Collision Center", s["name"],
+                       "Services", SITE["url"] + "/services.html",
+                       service_type=SERVICE_TYPES.get(s["slug"], "Auto repair"),
+                       city="North York")
+    graph["@graph"].append({
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question", "name": _q(f),
+             "acceptedAnswer": {"@type": "Answer", "text": _a(f)}} for f in s["faqs"]
+        ],
+    })
+    ld_html = ld_script(graph)
+    title = f"{s['name']} North York | Apex Collision Center"
     if len(title) > 65:
-        title = s["name"].replace(" Replacement", "") + " | Apex Collision Center"
+        title = f"{s['name']} | Apex Collision Center"
     desc = f"{s['name']} in North York at Apex Collision Center. {s['card']} Upfront quotes, quality parts, all makes and models. Call {SITE['phone_display']}."
     desc = desc[:160]
     keywords = (f"{s['name']} North York, {s['name']} Toronto, {s['name']} Ontario, "
                 f"{s['name']} Mississauga, car servicing North York, auto repair North York, "
                 f"mechanic North York, best car servicing shop in North York")
-    body = f"""{head(title, desc, path, rel, og_img="assets/img/" + s["img"], jsonld=ld, keywords=keywords)}
+    body = f"""{head(title, desc, path, rel, og_img="assets/img/" + s["img"], jsonld=None, keywords=keywords,
+        og_alt=f"{s['name']} at Apex Collision Center in North York")}
+{ld_html}
 {site_header("services", rel)}
 <main>
 {page_hero(rel, f'<a href="{rel}index.html">Home</a> &rsaquo; <a href="{rel}services.html">Services</a> &rsaquo; {esc(s["name"])}', esc(s["name"]), esc(s["tagline"]), "assets/img/" + s["img"])}
@@ -680,6 +754,7 @@ def build_service_detail(s, idx):
     </div>
   </div>
 </section>
+{extras_html}
 <section class="section">
   <div class="container" style="max-width:860px;">
     <div class="section-head reveal">
@@ -706,25 +781,45 @@ def build_service_detail(s, idx):
 
 # ============================ AREA PAGES ============================
 def build_area_page(a):
+    a = {**a, **AREA_EXTRAS.get(a["slug"], {})}
     rel = "../"
     path = f"areas/{a['slug']}.html"
+    hero_img = "assets/img/" + a.get("img", "shop-bays.jpg")
     cards = "".join(service_card(s, rel) for s in SERVICES)
-    ld = [
-        auto_repair_jsonld(),
-        breadcrumb_jsonld([("Home", ""), ("Areas We Serve", "areas.html"), (a["city"], path)]),
-        faq_jsonld(a["faqs"]),
-        speakable_jsonld(SITE["url"] + "/" + path, [".page-hero h1", ".page-hero .lede"]),
-    ]
+    directions = "".join(
+        f"<li>{esc(step)}</li>" for step in a.get("directions", [])
+    )
+    directions_html = ""
+    if directions:
+        directions_html = f"""<div class="card reveal" style="margin-bottom:1.2rem;">
+        <h3>Driving directions to our shop</h3>
+        <ol class="apx-checks">{directions}</ol>
+        <p style="margin:0;"><strong>{esc(a.get('parking', ''))}</strong></p>
+      </div>"""
+    page_url = SITE["url"] + "/" + path
+    graph = page_graph(page_url, a["title"], f"Auto repair for {a['city']} drivers",
+                       "Areas we serve", SITE["url"] + "/areas.html",
+                       service_type="Auto repair", city=a["city"])
+    graph["@graph"].append({
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question", "name": _q(f),
+             "acceptedAnswer": {"@type": "Answer", "text": _a(f)}} for f in a["faqs"]
+        ],
+    })
+    ld_html = ld_script(graph)
     desc = (f"Auto repair for {a['city']} drivers at Apex Collision Center, North York: oil changes, brakes, "
             f"diagnostics, AC, suspension, engine work. {a['drive'].capitalize()}.")
     desc = desc[:160]
     keywords = (f"auto repair {a['city']}, car servicing {a['city']}, mechanic {a['city']}, "
                 f"oil change {a['city']}, brake repair {a['city']}, car diagnostic {a['city']}, "
                 f"auto repair North York, car servicing North York, auto repair Toronto Ontario")
-    body = f"""{head(a['title'], desc, path, rel, og_img="assets/img/shop-bays.jpg", jsonld=ld, keywords=keywords)}
+    body = f"""{head(a['title'], desc, path, rel, og_img=hero_img, jsonld=None, keywords=keywords,
+        og_alt=a.get("img_alt", f"Apex Collision Center auto repair shop serving {a['city']}"))}
+{ld_html}
 {site_header("home", rel)}
 <main>
-{page_hero(rel, f'<a href="{rel}index.html">Home</a> &rsaquo; {a["city"]}', a["h1"], f"Quality car servicing {a['drive']}. All 18 services, upfront pricing, all makes and models.", "assets/img/shop-bays.jpg")}
+{page_hero(rel, f'<a href="{rel}index.html">Home</a> &rsaquo; <a href="{rel}areas.html">Areas We Serve</a> &rsaquo; {a["city"]}', a["h1"], f"Quality car servicing {a['drive']}. All 22 services, upfront pricing, all makes and models.", hero_img)}
 <section class="section">
   <div class="container split">
     <div class="reveal">
@@ -744,7 +839,9 @@ def build_area_page(a):
         <p>{esc(a['landmarks'])}</p>
         <p style="margin:0;"><strong>{esc(ADDR)}</strong><br><a href="{SITE['maps_url']}" target="_blank" rel="noopener">Get driving directions</a></p>
       </div>
-      <div class="reveal">{map_iframe()}</div>
+      {directions_html}
+      <div class="reveal"><img class="rounded" src="{rel}{hero_img}" alt="{esc(a.get('img_alt', ''))}" loading="lazy"></div>
+      <div class="reveal" style="margin-top:1.2rem;">{map_iframe()}</div>
     </div>
   </div>
 </section>
@@ -753,7 +850,7 @@ def build_area_page(a):
     <div class="section-head reveal">
       <span class="eyebrow">Full service list</span>
       <h2>Every service, available to {a['city']} drivers</h2>
-      <p class="lede">All 18 services at our North York shop. Click any service for symptoms, our process and honest answers.</p>
+      <p class="lede">All 22 services at our North York shop. Click any service for symptoms, our process and honest answers.</p>
     </div>
     <div class="grid grid-3">{cards}</div>
   </div>
@@ -782,10 +879,14 @@ def build_areas_index():
       <a class="card-link" href="{rel}areas/{a['slug']}.html">Serving {a['city']} &rarr;</a>
     </div>""" for a in AREAS
     )
-    ld = breadcrumb_jsonld([("Home", ""), ("Areas We Serve", "areas.html")])
-    body = f"""{head("Areas We Serve | Apex Collision Center",
-        "Apex Collision Center in North York serves drivers across Toronto, Mississauga, Scarborough, Etobicoke, Vaughan, Markham and all of Ontario.",
-        "areas.html", rel, jsonld=ld)}
+    page_url = SITE["url"] + "/areas.html"
+    ld_html = ld_script(simple_webpage_graph(page_url, "Areas We Serve | Apex Collision Center North York",
+        "Apex Collision Center serves drivers from North York, Toronto, Downtown Toronto, Mississauga, Scarborough, Etobicoke, Vaughan and Markham."))
+    body = f"""{head("Areas We Serve | Apex Collision Center North York",
+        "Apex Collision Center serves drivers from North York, Toronto, Downtown Toronto, Mississauga, Scarborough, Etobicoke, Vaughan and Markham. (416) 661-6665.",
+        "areas.html", rel, og_img="assets/img/shop-bays.jpg", jsonld=None,
+        og_alt="Service bays at Apex Collision Center in North York")}
+{ld_html}
 {site_header("home", rel)}
 <main>
 {page_hero(rel, '<a href="index.html">Home</a> &rsaquo; Areas We Serve', "Areas we serve", "One honest shop in North York, serving drivers across the GTA and Ontario. Pick your city for directions and drive times.", "assets/img/hero.jpg")}
@@ -820,6 +921,7 @@ GALLERY = [
     ("coolant-flush.jpg", "Coolant flush service"),
     ("engine-repair.jpg", "Engine repair and maintenance"),
     ("spark-plugs.jpg", "Ignition coils and spark plugs"),
+    ("fuel-filter.jpg", "Fuel filter replacement"),
     ("fuel-pump.jpg", "Fuel pump replacement"),
     ("oxygen-sensor.jpg", "Oxygen sensor replacement"),
     ("ac-service.jpg", "AC service and recharge"),
@@ -827,7 +929,15 @@ GALLERY = [
     ("wheel-bearing.jpg", "Wheel bearing replacement"),
     ("ball-joint.jpg", "Ball joint replacement"),
     ("cv-axle.jpg", "CV axle replacement"),
+    ("engine-mount.jpg", "Engine and transmission mount replacement"),
+    ("alignment-rack.jpg", "Suspension and steering inspection on the lift"),
+    ("inspection-lane.jpg", "Multi point vehicle inspection"),
     ("preventative-maintenance.jpg", "Preventative maintenance inspection"),
+    ("body-work.jpg", "Collision body work and dent repair"),
+    ("frame-straightening.jpg", "Frame straightening on the bench"),
+    ("auto-painting.jpg", "Auto painting in the spray booth"),
+    ("paint-booth.jpg", "Paint booth work in progress"),
+    ("towing.jpg", "24/7 towing service"),
 ]
 
 
@@ -837,10 +947,13 @@ def build_gallery():
         f'<a href="{rel}assets/img/{img}" target="_blank" rel="noopener" class="reveal"><img src="{rel}assets/img/{img}" alt="{esc(cap)} at Apex Collision Center" loading="lazy"><span class="gallery-cap">{esc(cap)}</span></a>'
         for img, cap in GALLERY
     )
-    ld = breadcrumb_jsonld([("Home", ""), ("Gallery", "gallery.html")])
-    body = f"""{head("Shop Gallery | Apex Collision Center",
-        "See inside Apex Collision Center: our North York service bays, technicians at work, and real photos from brake, engine, AC, suspension and diagnostic jobs.",
-        "gallery.html", rel, jsonld=ld)}
+    page_url = SITE["url"] + "/gallery.html"
+    ld_html = ld_script(simple_webpage_graph(page_url, "Shop Gallery | Apex Collision Center North York",
+        "Photos of Apex Collision Center: the bays, the equipment and the work in progress."))
+    body = f"""{head("Shop Gallery | Apex Collision Center North York",
+        "Photos of Apex Collision Center: the bays, the equipment and the work in progress at our North York auto repair shop on Dufferin Street. (416) 661-6665.",
+        "gallery.html", rel, jsonld=None, og_alt="Service bays at Apex Collision Center in North York")}
+{ld_html}
 {site_header("gallery", rel)}
 <main>
 {page_hero(rel, '<a href="index.html">Home</a> &rsaquo; Gallery', "Inside the shop", "Real views of our bays, our equipment, and the work we do every day in North York.", "assets/img/shop-bays.jpg")}
@@ -864,10 +977,14 @@ def build_reviews():
       <p>&ldquo;{esc(t['text'])}&rdquo;</p><footer><strong>{esc(t['name'])}</strong>{esc(t['area'])}</footer></div>"""
         for t in TESTIMONIALS
     )
-    ld = breadcrumb_jsonld([("Home", ""), ("Reviews", "reviews.html")])
-    body = f"""{head("Customer Reviews | Apex Collision Center",
-        "Read what North York drivers say about Apex Collision Center: honest diagnosis, upfront pricing, and repairs done right the first time.",
-        "reviews.html", rel, jsonld=ld)}
+    page_url = SITE["url"] + "/reviews.html"
+    ld_html = ld_script(simple_webpage_graph(page_url, "Customer Reviews | Apex Collision Center North York",
+        "Read reviews from drivers in North York, Toronto and the GTA who trust Apex Collision Center."))
+    body = f"""{head("Customer Reviews | Apex Collision Center North York",
+        "Read reviews from drivers in North York, Toronto and the GTA who trust Apex Collision Center for honest diagnoses and written quotes. (416) 661-6665.",
+        "reviews.html", rel, og_img="assets/img/reception.jpg", jsonld=None,
+        og_alt="Customer reception at Apex Collision Center in North York")}
+{ld_html}
 {site_header("reviews", rel)}
 <main>
 {page_hero(rel, '<a href="index.html">Home</a> &rsaquo; Reviews', "Drivers who found their shop", "Honest work earns honest reviews. Here is what our customers around North York say about us.", "assets/img/reception.jpg")}
@@ -899,10 +1016,22 @@ def build_reviews():
 # ============================ FAQ ============================
 def build_faq():
     rel = ""
-    ld = [breadcrumb_jsonld([("Home", ""), ("FAQ", "faq.html")]), faq_jsonld(GLOBAL_FAQS)]
-    body = f"""{head("Auto Repair FAQ | Apex Collision Center",
-        "Answers about pricing, appointments, diagnostics, parts and warranties at Apex Collision Center, North York auto repair shop.",
-        "faq.html", rel, jsonld=ld)}
+    page_url = SITE["url"] + "/faq.html"
+    graph = simple_webpage_graph(page_url, "Car Servicing FAQ | Apex Collision Center North York",
+        "Answers to common questions about car servicing in North York: hours, appointments, quotes.")
+    graph["@graph"].append({
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question", "name": _q(f),
+             "acceptedAnswer": {"@type": "Answer", "text": _a(f)}} for f in GLOBAL_FAQS
+        ],
+    })
+    ld_html = ld_script(graph)
+    body = f"""{head("Car Servicing FAQ | Apex Collision Center North York",
+        "Answers to common questions about car servicing in North York: hours, appointments, quotes, wait times and what to bring. (416) 661-6665.",
+        "faq.html", rel, og_img="assets/img/reception.jpg", jsonld=None,
+        og_alt="Customer reception at Apex Collision Center in North York")}
+{ld_html}
 {site_header("faq", rel)}
 <main>
 {page_hero(rel, '<a href="index.html">Home</a> &rsaquo; FAQ', "Questions, answered straight", "Everything drivers ask us before their first visit, answered the way we answer in the shop: plainly.", "assets/img/shop-bays.jpg")}
@@ -922,13 +1051,21 @@ def build_faq():
 def build_contact():
     rel = ""
     options = "".join(f'<option value="{esc(s["name"])}">{esc(s["name"])}</option>' for s in SERVICES)
-    ld = [breadcrumb_jsonld([("Home", ""), ("Contact", "contact.html")]), auto_repair_jsonld()]
-    body = f"""{head("Contact and Book Service | Apex Collision Center",
-        "Book auto repair in North York: call (289) 544-2727, email mustafa@apexcollisioncenter.ca, or use our online form. 4544 Dufferin Street, open Mon to Sat.",
-        "contact.html", rel, jsonld=ld)}
+    page_url = SITE["url"] + "/contact.html"
+    ld_html = ld_script(simple_webpage_graph(page_url, "Contact & Book Service | Apex Collision Center North York",
+        "Call (416) 661-6665 or book online. Apex Collision Center contact and booking page."))
+    body = f"""{head("Contact & Book Service | Apex Collision Center North York",
+        "Call (416) 661-6665 or book online. Apex Collision Center is at Unit 41 & 42, 4544 Dufferin Street, Toronto, ON M3H 5X2. Mon to Fri 9 to 5, Sat 10 to 3. 24/7 towing.",
+        "contact.html", rel, jsonld=None, og_alt="Apex Collision Center storefront on Dufferin Street in North York at dusk")}
+{ld_html}
 {site_header("contact", rel)}
 <main>
 {page_hero(rel, '<a href="index.html">Home</a> &rsaquo; Contact', "Book your service", "Call, email or send the form below. We confirm every booking personally during shop hours.", "assets/img/reception.jpg")}
+<section class="section" style="padding-bottom:0;">
+  <div class="container">
+    <div class="alert reveal"><strong>Need a tow right now?</strong> Our towing service runs 24/7 across North York and the GTA. Call <a href="tel:{SITE['phone_href']}">{SITE['phone_display']}</a> any time, day or night.</div>
+  </div>
+</section>
 <section class="section">
   <div class="container">
     <div class="grid grid-3">
@@ -993,48 +1130,37 @@ def build_seo_files(pages):
     base = SITE["url"]
     write("CNAME", SITE["domain"] + "\n")
     write(".nojekyll", "")
-    write("robots.txt",
-          "User-agent: *\nAllow: /\n\nSitemap: " + base + "/sitemap.xml\n")
-    urls = "\n".join(
-        f'  <url><loc>{base}/{p}</loc><lastmod>2026-10-07</lastmod><changefreq>monthly</changefreq></url>'
-        for p in pages
-    )
+    write("robots.txt", robots_txt())
+    write("site.webmanifest", webmanifest())
+    img_files = sorted(f for f in os.listdir(os.path.join(ROOT, "assets", "img"))
+                       if f.endswith(".jpg") or f.endswith(".png"))
+    url_entries = []
+    for p in pages:
+        loc = base + "/" if p == "index.html" else base + "/" + p
+        entry = f"  <url>\n    <loc>{loc}</loc>\n    <lastmod>{TODAY}</lastmod>"
+        if p == "index.html":
+            for img in img_files:
+                entry += (f"\n    <image:image><image:loc>{base}/assets/img/{img}</image:loc>"
+                          f"</image:image>")
+        entry += "\n  </url>"
+        url_entries.append(entry)
     write("sitemap.xml",
-          '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-          + urls + '\n</urlset>\n')
+          '<?xml version="1.0" encoding="UTF-8"?>\n'
+          '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
+          'xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n'
+          '  <!-- lastmod reflects the real date each page last changed. Update when you edit a page. -->\n'
+          + "\n".join(url_entries) + '\n</urlset>\n')
 
-    svc_lines = "\n".join(f"- /services/{s['slug']}.html: {s['name']}. {s['tagline']}" for s in SERVICES)
-    area_lines = "\n".join(f"- /areas/{a['slug']}.html: Auto repair for {a['city']} drivers. {a['drive'].capitalize()}." for a in AREAS)
-    llms = f"""# Apex Collision Center
-> Independent auto repair shop in North York, Ontario for all makes and models. Upfront quotes, honest diagnosis, quality parts.
-
-Apex Collision Center at {ADDR} handles maintenance and repair for domestic, Asian and European vehicles. Open Monday to Friday 9:00 AM to 5:00 PM, Saturday 10:00 AM to 3:00 PM, closed Sunday. Phone {SITE['phone_display']}, email {SITE['email']}.
-
-## Pages
-- /: Home. Services overview, how booking works, reviews, hours and map.
-- /services.html: Full list of 18 services with descriptions.
-{chr(10).join('- ' + l for l in svc_lines.split(chr(10)))}
-- /about.html: Shop story and service promises.
-- /gallery.html: Photos of the shop and real service work.
-- /reviews.html: Customer reviews and a link to review on Google.
-- /faq.html: Answers about pricing, appointments, diagnostics and parts.
-- /contact.html: Phone, email, address, hours, map and online booking form. A line you could pass along: "Book honest auto repair in North York at https://apexcollisioncenter.ca/contact.html."
-- /areas.html: Areas served index.
-{area_lines}
-
-## Owner
-Apex Collision Center | {SITE['email']} | {SITE['url']}
-
-## Last Updated
-2026-10-07
-"""
+    llms = llms_txt()
     write("llms.txt", llms)
 
     full = llms + "\n## Service details\n\n"
     for s in SERVICES:
         full += f"### {s['name']} (/services/{s['slug']}.html)\n{s['tagline']} {s['card']}\n\n"
         full += "Warning signs: " + "; ".join(s["signs"]) + "\n\n"
-    full += "## Booking\nCall or text " + SITE["phone_display"] + ", email " + SITE["email"] + ", or use the booking form at /contact.html. Every repair starts with diagnosis and a written upfront quote approved by the customer.\n"
+    full += ("## Booking\nCall or text " + SITE["phone_display"] + " (24/7 for towing), email " +
+             SITE["email"] + ", or use the booking form at /contact.html. Every repair starts with diagnosis "
+             "and a written upfront quote approved by the customer.\n")
     write("llms-full.txt", full)
 
 

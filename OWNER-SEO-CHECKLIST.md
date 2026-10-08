@@ -8,7 +8,7 @@ for searches like "best car servicing shop in North York".
 ## 1. Google Business Profile (most important, do first)
 
 - Claim and verify the profile for Apex Collision Center at 4544 Dufferin Street, North York.
-- Use the exact business name, address and phone (289) 544-2727 everywhere. Consistency matters.
+- Use the exact business name, address and phone (416) 661-6665 everywhere. Consistency matters.
 - Set hours: Mon-Fri 9-5, Sat 10-3, Sun closed.
 - Add the same 18 services listed on the website, with descriptions copied from the service pages.
 - Upload real shop photos (exterior, bays, team at work). Replace the sample gallery images over time.
