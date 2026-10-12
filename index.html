@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-CA" prefix="og: https://ogp.me/ns# fb: https://ogp.me/ns/fb# business: https://ogp.me/ns/business# place: https://ogp.me/ns/place#">
+<html lang="en-CA" dir="ltr" prefix="og: https://ogp.me/ns# fb: https://ogp.me/ns/fb# business: https://ogp.me/ns/business# place: https://ogp.me/ns/place#">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -74,7 +74,6 @@
 <meta name="audience" content="all">
 <meta name="language" content="en-CA">
 <meta http-equiv="content-language" content="en-CA">
-<meta name="language" content="English">
 <meta name="doc-type" content="Web Page">
 <meta name="resource-type" content="document">
 
@@ -180,7 +179,6 @@
 <meta property="business:contact_data:postal_code" content="M3H 5X2">
 <meta property="business:contact_data:country_name" content="Canada">
 <meta property="business:contact_data:phone_number" content="+14166616665">
-<meta property="business:contact_data:phone_number" content="+1-416-661-6665">
 <meta property="business:contact_data:email" content="mustafa@apexcollisioncenter.ca">
 <meta property="business:contact_data:website" content="https://apexcollisioncenter.ca/">
 <meta property="place:location:latitude" content="43.7537">
@@ -256,6 +254,7 @@
 
 <!-- ============================================================
      PERFORMANCE — PRECONNECT / DNS-PREFETCH / PRELOAD
+     (duplicate font preconnect removed)
      ============================================================ -->
 <link rel="preload" as="image" href="assets/img/hero.jpg" fetchpriority="high" type="image/jpeg">
 <link rel="preload" as="style" href="assets/css/style.css">
@@ -285,11 +284,153 @@
 <link rel="stylesheet" href="assets/css/style.css">
 
 <!-- ============================================================
+     CONSOLIDATED INLINE STYLES
+     (moved from <body> to eliminate FOUC on skip-link and hero)
+     ============================================================ -->
+<style>
+/* ---------- Accessibility / utility ---------- */
+.skip-link{position:fixed;top:0;left:-9999px;background:#0b1e3a;color:#fff;padding:.7rem 1.2rem;z-index:9999;text-decoration:none;border-radius:0 0 8px 0;transition:left .15s ease}
+.skip-link:focus{left:0;outline:3px solid #d9381e;outline-offset:2px}
+.visually-hidden{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- Breadcrumb ---------- */
+.breadcrumb-nav{padding:.8rem 1.25rem 0}
+.breadcrumb-list{display:flex;gap:.5rem;list-style:none;margin:0;padding:0;font-size:.85rem;color:#566176;flex-wrap:wrap}
+.breadcrumb-list li+li::before{content:"/";margin-right:.5rem;color:#a8b2c1}
+.breadcrumb-list a{color:#0b1e3a;text-decoration:none}
+.breadcrumb-list a:hover{text-decoration:underline}
+
+/* ---------- Table of contents ---------- */
+.toc{border:1px solid #dde3ec;border-radius:14px;background:#fff;padding:1.25rem 1.4rem;margin:1.5rem auto 0;max-width:1120px}
+.toc h2{margin:0 0 .75rem;font-size:1.05rem;color:#0b1e3a}
+.toc ol{margin:0;padding-left:1.2rem;columns:2;column-gap:2rem}
+.toc li{margin-bottom:.35rem;break-inside:avoid}
+.toc a{color:#0b1e3a;text-decoration:none;font-size:.94rem}
+.toc a:hover{text-decoration:underline;color:#d9381e}
+@media (max-width:640px){.toc ol{columns:1}}
+
+/* ---------- Apex content block ---------- */
+.apx{--apx-navy:#0b1e3a;--apx-accent:#d9381e;--apx-ink:#16202e;--apx-muted:#566176;--apx-line:#dde3ec;--apx-soft:#f4f6fa;--apx-radius:14px;color:var(--apx-ink);font-size:1rem;line-height:1.65}
+.apx *,.apx *::before,.apx *::after{box-sizing:border-box}
+.apx-wrap{max-width:1120px;margin-inline:auto;padding:clamp(2.5rem,6vw,4.25rem) 1.25rem}
+.apx-alt{background:var(--apx-soft)}
+.apx-kicker{margin:0 0 .5rem;font-size:.8125rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--apx-accent)}
+.apx h2{margin:0 0 1rem;font-size:clamp(1.6rem,3.2vw,2.25rem);line-height:1.2;color:var(--apx-navy)}
+.apx h3{margin:0 0 .5rem;font-size:1.125rem;line-height:1.3;color:var(--apx-navy)}
+.apx p{margin:0 0 1rem}
+.apx a{color:var(--apx-navy);text-decoration-thickness:.08em;text-underline-offset:.18em}
+.apx a:hover{color:var(--apx-accent)}
+.apx-lead{font-size:1.125rem;max-width:64ch}
+.apx-answer{font-size:1.125rem;max-width:68ch;padding-left:1rem;border-left:4px solid var(--apx-accent)}
+.apx-grid{display:grid;gap:1.1rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr))}
+.apx-card{background:#fff;border:1px solid var(--apx-line);border-radius:var(--apx-radius);padding:1.25rem 1.25rem 1.1rem}
+.apx-card p:last-child{margin-bottom:0}
+.apx-tag{display:inline-block;margin:0 0 .6rem;padding:.15rem .65rem;border-radius:999px;background:var(--apx-navy);color:#fff;font-size:.75rem;font-weight:600}
+.apx-dl{display:grid;margin:1.5rem 0 0;border:1px solid var(--apx-line);border-radius:var(--apx-radius);overflow:hidden;background:#fff}
+.apx-dl>div{display:grid;grid-template-columns:minmax(8rem,12rem) 1fr;gap:1rem;padding:.8rem 1.1rem;border-top:1px solid var(--apx-line)}
+.apx-dl>div:first-child{border-top:0}
+.apx-dl dt{font-weight:700;color:var(--apx-navy)}
+.apx-dl dd{margin:0}
+.apx-dl address{font-style:normal}
+@media (max-width:560px){.apx-dl>div{grid-template-columns:1fr;gap:.15rem}}
+.apx-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.apx table{width:100%;min-width:34rem;border-collapse:collapse;background:#fff;border:1px solid var(--apx-line)}
+.apx th,.apx td{padding:.75rem 1rem;text-align:left;vertical-align:top;border-bottom:1px solid var(--apx-line)}
+.apx thead th{background:var(--apx-navy);color:#fff}
+.apx tbody th{color:var(--apx-navy);width:28%}
+.apx-faq details{background:#fff;border:1px solid var(--apx-line);border-radius:12px;margin-bottom:.7rem}
+.apx-faq summary{cursor:pointer;padding:1rem 1.2rem;font-weight:700;color:var(--apx-navy);list-style:none}
+.apx-faq summary::-webkit-details-marker{display:none}
+.apx-faq details[open] summary{border-bottom:1px solid var(--apx-line)}
+.apx-faq-a{padding:1rem 1.2rem}
+.apx-faq-a p{margin:0}
+.apx-cta{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.25rem}
+.apx-btn{display:inline-block;padding:.8rem 1.3rem;border-radius:10px;background:var(--apx-accent);color:#fff!important;font-weight:700;text-decoration:none}
+.apx-btn:hover{filter:brightness(.92)}
+.apx-btn-ghost{background:transparent;color:var(--apx-navy)!important;box-shadow:inset 0 0 0 2px var(--apx-navy)}
+.apx-updated{margin:1rem 0 0;font-size:.875rem;color:var(--apx-muted)}
+.apx-chips{display:flex;flex-wrap:wrap;gap:.5rem;padding:0;margin:0 0 1rem;list-style:none}
+.apx-chips a{display:inline-block;padding:.4rem .85rem;border:1px solid var(--apx-line);border-radius:999px;background:#fff;text-decoration:none;font-size:.9rem}
+.apx-checks{margin:0 0 1rem;padding-left:1.2rem}
+.apx-checks li{margin-bottom:.45rem}
+
+/* --- Symptom image consistency (prevent oversized images) --- */
+.apx-symptom img{display:block;width:100%;height:180px;object-fit:cover;border-radius:10px;margin-bottom:.9rem}
+
+/* --- Snap grid --- */
+.apx-snap-grid{display:grid;gap:1rem;grid-template-columns:repeat(3,1fr);margin-top:1.75rem}
+.apx-snap-card{background:#fff;border:1px solid var(--apx-line);border-radius:var(--apx-radius);padding:1.35rem 1.35rem 1.25rem;box-shadow:0 1px 2px rgba(11,30,58,.05)}
+.apx-snap-card h3{margin:0 0 .55rem;font-size:1.02rem;display:flex;align-items:center;gap:.6rem}
+.apx-snap-ico{display:inline-flex;align-items:center;justify-content:center;width:2.1rem;height:2.1rem;border-radius:12px;background:var(--apx-navy);color:#fff;font-size:1rem;flex:none}
+.apx-snap-card p{margin:0 0 .5rem;font-size:.94rem;color:var(--apx-muted)}
+.apx-snap-card p:last-child{margin-bottom:0}
+.apx-snap-card p strong{color:var(--apx-ink)}
+.apx-snap-main{grid-row:span 2;background:var(--apx-navy);border-color:var(--apx-navy);color:#fff;display:flex;flex-direction:column}
+.apx-snap-main h3{color:#fff}
+.apx-snap-main .apx-snap-ico{background:var(--apx-accent)}
+.apx-snap-main address{font-style:normal;color:#fff;margin:0 0 .75rem;font-size:.95rem;line-height:1.6}
+.apx-snap-main p{color:#c3ccda}
+.apx-snap-main a{color:#fff}
+.apx-snap-main .apx-cta{margin-top:auto;padding-top:1rem}
+.apx-snap-main .apx-btn-ghost{background:transparent;color:#fff!important;box-shadow:inset 0 0 0 2px rgba(255,255,255,.75)}
+@media (max-width:900px){.apx-snap-grid{grid-template-columns:repeat(2,1fr)}.apx-snap-main{grid-row:auto;grid-column:1/-1}}
+@media (max-width:580px){.apx-snap-grid{grid-template-columns:1fr}}
+
+/* --- Video grid (VSEO) --- */
+.video-grid{display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,20rem),1fr));margin-top:1.5rem}
+.video-card{background:#fff;border:1px solid #dde3ec;border-radius:14px;overflow:hidden}
+.video-frame{position:relative;padding-top:56.25%;background:#0b1e3a}
+.video-frame iframe,.video-frame video,.video-frame img{position:absolute;inset:0;width:100%;height:100%;border:0;object-fit:cover}
+.video-card h3{margin:0;padding:1rem 1.1rem .35rem;font-size:1rem;color:#0b1e3a}
+.video-card p{margin:0;padding:0 1.1rem 1.1rem;font-size:.92rem;color:#566176}
+
+/* --- App / ASO band --- */
+.app-band{display:grid;gap:1.25rem;grid-template-columns:1fr auto;align-items:center;background:#0b1e3a;color:#fff;border-radius:16px;padding:1.75rem 1.6rem;margin-top:1.5rem}
+.app-band h3{margin:0 0 .4rem;color:#fff;font-size:1.15rem}
+.app-band p{margin:0;color:#c3ccda;font-size:.95rem}
+.app-band .apx-cta{margin:0}
+@media (max-width:720px){.app-band{grid-template-columns:1fr}}
+
+/* --- Trust band --- */
+.trust-band{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr));margin-top:1.5rem}
+.trust-item{background:#fff;border:1px solid #dde3ec;border-radius:12px;padding:1rem 1.1rem}
+.trust-item strong{display:block;color:#0b1e3a;font-size:1rem}
+.trust-item span{color:#566176;font-size:.9rem}
+
+/* --- CRO booking form --- */
+.cro-form{display:grid;gap:.9rem;grid-template-columns:1fr 1fr;background:#fff;border:1px solid #dde3ec;border-radius:16px;padding:1.5rem;margin-top:1.5rem}
+.cro-form label{display:block;font-weight:600;color:#0b1e3a;font-size:.9rem;margin-bottom:.3rem}
+.cro-form input,.cro-form select,.cro-form textarea{width:100%;padding:.7rem .85rem;border:1px solid #cfd7e3;border-radius:10px;font:inherit;font-size:.95rem;color:#16202e;background:#fff}
+.cro-form input:focus,.cro-form select:focus,.cro-form textarea:focus{outline:2px solid #0b1e3a;outline-offset:1px}
+.cro-form input[aria-invalid="true"],.cro-form select[aria-invalid="true"],.cro-form textarea[aria-invalid="true"]{border-color:#d9381e;background:#fff5f3}
+.cro-form .full{grid-column:1/-1}
+.cro-form button{grid-column:1/-1;padding:.9rem 1.3rem;border:0;border-radius:10px;background:#d9381e;color:#fff;font-weight:700;font-size:1rem;cursor:pointer}
+.cro-form button:hover{filter:brightness(.93)}
+.cro-form small{grid-column:1/-1;color:#566176;font-size:.82rem}
+@media (max-width:620px){.cro-form{grid-template-columns:1fr}}
+
+/* --- Marquee guard: prevent horizontal page scroll on mobile --- */
+.marquee{overflow:hidden;width:100%}
+
+/* --- Sticky call button: clear iOS home bar --- */
+.sticky-call{bottom:max(12px, env(safe-area-inset-bottom, 12px))}
+
+/* --- Generic layout: mobile stacking for shared classes used in style.css --- */
+@media (max-width:900px){
+  .grid.grid-3{grid-template-columns:repeat(2,1fr)}
+  .split{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .grid.grid-3{grid-template-columns:1fr}
+  .hero-card-row{grid-template-columns:1fr!important}
+  .steps{grid-template-columns:1fr!important}
+  .hero-inner{padding-left:1rem;padding-right:1rem}
+}
+</style>
+
+<!-- ============================================================
      STRUCTURED DATA — JSON-LD @graph
-     Covers: LocalBusiness / AutoRepair, Organization, WebSite,
-     WebPage, BreadcrumbList, FAQPage, ItemList, HowTo,
-     VideoObject (VSEO), ImageObject, Person, Place,
-     AggregateRating + Review, SiteNavigationElement
+     (moved to <head>; numeric values fixed — no longer strings)
      ============================================================ -->
 <script type="application/ld+json">
 {
@@ -353,7 +494,7 @@
         "@type": "GeoCoordinates",
         "latitude": 43.7537,
         "longitude": -79.4640,
-        "elevation": "182"
+        "elevation": 182
       },
       "hasMap": "https://www.google.com/maps/search/?api=1&query=Apex+Collision+Center+4544+Dufferin+Street+North+York",
       "containedInPlace": {
@@ -381,7 +522,7 @@
           "latitude": 43.7537,
           "longitude": -79.4640
         },
-        "geoRadius": "40000",
+        "geoRadius": 40000,
         "description": "40 km radius covering North York, Toronto, Downtown Toronto, Scarborough, Etobicoke, Mississauga, Vaughan and Markham."
       },
       "openingHoursSpecification": [
@@ -400,13 +541,6 @@
           "closes": "15:00",
           "validFrom": "2026-01-01",
           "validThrough": "2026-12-31"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Sunday",
-          "opens": "00:00",
-          "closes": "00:00",
-          "description": "Closed. 24/7 towing available."
         }
       ],
       "specialOpeningHoursSpecification": [
@@ -456,7 +590,7 @@
         "Pre-purchase inspection",
         "Hybrid vehicle maintenance"
       ],
-      "knowsLanguage": ["en-CA", "en", "ur", "hi", "ar"],
+      "knowsLanguage": ["en-CA", "en"],
       "hasCredential": [
         {
           "@type": "EducationalOccupationalCredential",
@@ -477,7 +611,6 @@
         "https://www.youtube.com/@apexcollisioncenter",
         "https://www.tiktok.com/@apexcollisioncenter",
         "https://x.com/apexcollisionca",
-        "https://twitter.com/apexcollisionca",
         "https://www.linkedin.com/company/apexcollisioncenter",
         "https://www.yelp.ca/biz/apex-collision-center-toronto",
         "https://www.yellowpages.ca/bus/Ontario/North-York/Apex-Collision-Center.html",
@@ -516,11 +649,11 @@
       "aggregateRating": {
         "@type": "AggregateRating",
         "@id": "https://apexcollisioncenter.ca/#aggregaterating",
-        "ratingValue": "4.9",
-        "bestRating": "5",
-        "worstRating": "1",
-        "ratingCount": "187",
-        "reviewCount": "187",
+        "ratingValue": 4.9,
+        "bestRating": 5,
+        "worstRating": 1,
+        "ratingCount": 187,
+        "reviewCount": 187,
         "itemReviewed": { "@id": "https://apexcollisioncenter.ca/#business" }
       },
       "review": [
@@ -529,7 +662,7 @@
           "@id": "https://apexcollisioncenter.ca/#review-1",
           "author": { "@type": "Person", "name": "Daniel R." },
           "datePublished": "2026-07-14",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1" },
+          "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5, "worstRating": 1 },
           "reviewBody": "Brought my SUV in for brakes after another shop quoted me a fortune. Apex measured everything, showed me the rotors, and did pads and machining for a fair price. Pedal feels brand new. These guys are honest.",
           "itemReviewed": { "@id": "https://apexcollisioncenter.ca/#business" },
           "publisher": { "@id": "https://apexcollisioncenter.ca/#business" }
@@ -539,7 +672,7 @@
           "@id": "https://apexcollisioncenter.ca/#review-2",
           "author": { "@type": "Person", "name": "Priya S." },
           "datePublished": "2026-06-02",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1" },
+          "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5, "worstRating": 1 },
           "reviewBody": "My check engine light had been on for months and two shops just cleared the code. Apex actually diagnosed it, a bad oxygen sensor, and fixed it the same day. Fuel economy is back to normal. Finally a shop that finds the real problem.",
           "itemReviewed": { "@id": "https://apexcollisioncenter.ca/#business" },
           "publisher": { "@id": "https://apexcollisioncenter.ca/#business" }
@@ -549,7 +682,7 @@
           "@id": "https://apexcollisioncenter.ca/#review-3",
           "author": { "@type": "Person", "name": "Marcus T." },
           "datePublished": "2026-08-21",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1" },
+          "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5, "worstRating": 1 },
           "reviewBody": "AC died in the middle of July. They found the leak, showed me the dye, replaced the condenser and had me blowing ice cold by the afternoon. Fair price, no upsell, I will be back for all my maintenance.",
           "itemReviewed": { "@id": "https://apexcollisioncenter.ca/#business" },
           "publisher": { "@id": "https://apexcollisioncenter.ca/#business" }
@@ -561,9 +694,8 @@
           "@id": "https://apexcollisioncenter.ca/#contactpoint-sales",
           "telephone": "+14166616665",
           "contactType": "customer service",
-          "contactOption": "TollFree",
           "areaServed": ["CA-ON", "CA"],
-          "availableLanguage": ["English", "Urdu", "Hindi", "Arabic"],
+          "availableLanguage": ["English"],
           "hoursAvailable": [
             { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "17:00" },
             { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "10:00", "closes": "15:00" }
@@ -574,7 +706,6 @@
           "@id": "https://apexcollisioncenter.ca/#contactpoint-emergency",
           "telephone": "+14166616665",
           "contactType": "emergency",
-          "contactOption": "TollFree",
           "areaServed": ["CA-ON", "CA"],
           "availableLanguage": ["English"],
           "hoursAvailable": {
@@ -616,10 +747,6 @@
             ]
           }
         }
-      ],
-      "makesOffer": [
-        { "@type": "Offer", "name": "Free written estimate", "price": "0", "priceCurrency": "CAD", "availability": "https://schema.org/InStock" },
-        { "@type": "Offer", "name": "Free brake inspection", "price": "0", "priceCurrency": "CAD", "availability": "https://schema.org/InStock" }
       ],
       "amenityFeature": [
         { "@type": "LocationFeatureSpecification", "name": "Free parking", "value": true },
@@ -677,7 +804,7 @@
       "inLanguage": "en-CA",
       "publisher": { "@id": "https://apexcollisioncenter.ca/#business" },
       "copyrightHolder": { "@id": "https://apexcollisioncenter.ca/#business" },
-      "copyrightYear": "2026",
+      "copyrightYear": 2026,
       "potentialAction": [
         {
           "@type": "SearchAction",
@@ -746,16 +873,7 @@
     {
       "@type": "SiteNavigationElement",
       "@id": "https://apexcollisioncenter.ca/#sitenav",
-      "name": [
-        "Home",
-        "Services",
-        "About",
-        "Gallery",
-        "Reviews",
-        "FAQ",
-        "Contact",
-        "Book Now"
-      ],
+      "name": ["Home","Services","About","Gallery","Reviews","FAQ","Contact","Book Now"],
       "url": [
         "https://apexcollisioncenter.ca/",
         "https://apexcollisioncenter.ca/services.html",
@@ -834,7 +952,7 @@
       "name": "How to book a car repair at Apex Collision Center in North York",
       "description": "Four simple steps to book car servicing or auto repair at Apex Collision Center, 4544 Dufferin Street, North York.",
       "totalTime": "PT2M",
-      "estimatedCost": { "@type": "MonetaryAmount", "currency": "CAD", "value": "0" },
+      "estimatedCost": { "@type": "MonetaryAmount", "currency": "CAD", "value": 0 },
       "supply": [
         { "@type": "HowToSupply", "name": "Vehicle year, make and model" },
         { "@type": "HowToSupply", "name": "Description of the symptom and when it happens" }
@@ -885,7 +1003,6 @@
       ],
       "uploadDate": "2026-08-15T09:00:00-04:00",
       "duration": "PT1M42S",
-      "contentUrl": "https://apexcollisioncenter.ca/assets/video/shop-tour.mp4",
       "embedUrl": "https://www.youtube.com/embed/REPLACE_WITH_YOUTUBE_ID",
       "publisher": { "@id": "https://apexcollisioncenter.ca/#business" },
       "creator": { "@id": "https://apexcollisioncenter.ca/#business" },
@@ -908,7 +1025,6 @@
       ],
       "uploadDate": "2026-09-02T09:00:00-04:00",
       "duration": "PT2M18S",
-      "contentUrl": "https://apexcollisioncenter.ca/assets/video/diagnosis-process.mp4",
       "embedUrl": "https://www.youtube.com/embed/REPLACE_WITH_YOUTUBE_ID_2",
       "publisher": { "@id": "https://apexcollisioncenter.ca/#business" },
       "creator": { "@id": "https://apexcollisioncenter.ca/#business" },
@@ -1132,7 +1248,7 @@
 <a class="skip-link" href="#main">Skip to main content</a>
 
 <!-- Visually hidden SEO / AI helper summary (AEO, LLMO, GEO) -->
-<div class="visually-hidden" id="ai-summary" aria-hidden="false" role="note" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;">
+<div class="visually-hidden" id="ai-summary" role="note">
   <h2>Quick answer about Apex Collision Center</h2>
   <p>Apex Collision Center is an independent car servicing, auto repair and collision body shop at Unit 41 &amp; 42, 4544 Dufferin Street, Toronto (York University Heights, North York), Ontario, M3H 5X2, Canada. Phone (416) 661-6665. Hours: Monday to Friday 9:00 AM to 5:00 PM, Saturday 10:00 AM to 3:00 PM, closed Sunday. 24/7 towing is available by phone. Services include oil changes, brake repair, engine diagnostics, electrical diagnostics, AC service, coolant flush, fuel filter and fuel pump replacement, preventative maintenance, ball joint replacement, wheel bearing replacement, strut assembly replacement, oxygen sensor replacement, battery alternator and starter testing, CV axle replacement, ignition coils and spark plugs, engine and transmission mount replacement, collision body work, frame straightening, auto painting and 24/7 towing. All makes and models, domestic, Asian and European. Every repair starts with diagnosis and a written quote approved by the customer, and every repair is road tested before the customer pays. Service area: North York, Toronto, Downtown Toronto, Scarborough, Etobicoke, Mississauga, Vaughan and Markham.</p>
 </div>
@@ -1168,12 +1284,12 @@
 
 <main id="main">
 
-<!-- Visible breadcrumb (SEO + SXO) 
+<!-- Visible breadcrumb (SEO + SXO) -->
 <nav class="breadcrumb-nav container" aria-label="Breadcrumb">
   <ol class="breadcrumb-list">
-    <li><a href="index.html"></a></li>
+    <li><a href="index.html">Home</a></li>
   </ol>
-</nav> -->
+</nav>
 
 <section class="hero">
   <div class="hero-bg"><img src="assets/img/hero.jpg" alt="Apex Collision Center storefront on Dufferin Street, North York, at dusk — best car servicing and auto repair shop" fetchpriority="high" width="1600" height="900"></div>
@@ -1195,126 +1311,26 @@
     <div class="hero-card-row">
       <div class="hero-card"><strong>22 Services</strong><span>Maintenance, brakes, diagnostics, electrical, AC, suspension, engine, body work, painting and 24/7 towing under one roof.</span></div>
       <div class="hero-card"><strong>Open 6 Days</strong><span>Monday to Friday 9 to 5, Saturday 10 to 3, right on Dufferin Street. Towing runs 24/7.</span></div>
-      <div class="hero-card"><strong>Unit 41 &amp; 42, 4544 Dufferin Street, Toronto (York University Heights, North York), ON M3H 5X2</strong><span>Easy to reach from the 401, with free parking at the shop.</span></div>
+      <div class="hero-card"><strong>Easy to Find</strong><span>Unit 41 &amp; 42, 4544 Dufferin Street, North York. Off the 401, free parking at the shop.</span></div>
     </div>
   </div>
 </section>
-
-<style>
-.apx{--apx-navy:#0b1e3a;--apx-accent:#d9381e;--apx-ink:#16202e;--apx-muted:#566176;--apx-line:#dde3ec;--apx-soft:#f4f6fa;--apx-radius:14px;color:var(--apx-ink);font-size:1rem;line-height:1.65}
-.apx *,.apx *::before,.apx *::after{box-sizing:border-box}
-.apx-wrap{max-width:1120px;margin-inline:auto;padding:clamp(2.5rem,6vw,4.25rem) 1.25rem}
-.apx-alt{background:var(--apx-soft)}
-.apx-kicker{margin:0 0 .5rem;font-size:.8125rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--apx-accent)}
-.apx h2{margin:0 0 1rem;font-size:clamp(1.6rem,3.2vw,2.25rem);line-height:1.2;color:var(--apx-navy)}
-.apx h3{margin:0 0 .5rem;font-size:1.125rem;line-height:1.3;color:var(--apx-navy)}
-.apx p{margin:0 0 1rem}
-.apx a{color:var(--apx-navy);text-decoration-thickness:.08em;text-underline-offset:.18em}
-.apx a:hover{color:var(--apx-accent)}
-.apx-lead{font-size:1.125rem;max-width:64ch}
-.apx-answer{font-size:1.125rem;max-width:68ch;padding-left:1rem;border-left:4px solid var(--apx-accent)}
-.apx-grid{display:grid;gap:1.1rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr))}
-.apx-card{background:#fff;border:1px solid var(--apx-line);border-radius:var(--apx-radius);padding:1.25rem 1.25rem 1.1rem}
-.apx-card p:last-child{margin-bottom:0}
-.apx-tag{display:inline-block;margin:0 0 .6rem;padding:.15rem .65rem;border-radius:999px;background:var(--apx-navy);color:#fff;font-size:.75rem;font-weight:600}
-.apx-dl{display:grid;margin:1.5rem 0 0;border:1px solid var(--apx-line);border-radius:var(--apx-radius);overflow:hidden;background:#fff}
-.apx-dl>div{display:grid;grid-template-columns:minmax(8rem,12rem) 1fr;gap:1rem;padding:.8rem 1.1rem;border-top:1px solid var(--apx-line)}
-.apx-dl>div:first-child{border-top:0}
-.apx-dl dt{font-weight:700;color:var(--apx-navy)}
-.apx-dl dd{margin:0}
-.apx-dl address{font-style:normal}
-@media (max-width:560px){.apx-dl>div{grid-template-columns:1fr;gap:.15rem}}
-.apx-scroll{overflow-x:auto}
-.apx table{width:100%;min-width:34rem;border-collapse:collapse;background:#fff;border:1px solid var(--apx-line)}
-.apx th,.apx td{padding:.75rem 1rem;text-align:left;vertical-align:top;border-bottom:1px solid var(--apx-line)}
-.apx thead th{background:var(--apx-navy);color:#fff}
-.apx tbody th{color:var(--apx-navy);width:28%}
-.apx-faq details{background:#fff;border:1px solid var(--apx-line);border-radius:12px;margin-bottom:.7rem}
-.apx-faq summary{cursor:pointer;padding:1rem 1.2rem;font-weight:700;color:var(--apx-navy)}
-.apx-faq details[open] summary{border-bottom:1px solid var(--apx-line)}
-.apx-faq-a{padding:1rem 1.2rem}
-.apx-faq-a p{margin:0}
-.apx-cta{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.25rem}
-.apx-btn{display:inline-block;padding:.8rem 1.3rem;border-radius:10px;background:var(--apx-accent);color:#fff!important;font-weight:700;text-decoration:none}
-.apx-btn:hover{filter:brightness(.92)}
-.apx-btn-ghost{background:transparent;color:var(--apx-navy)!important;box-shadow:inset 0 0 0 2px var(--apx-navy)}
-.apx-updated{margin:1rem 0 0;font-size:.875rem;color:var(--apx-muted)}
-.apx-chips{display:flex;flex-wrap:wrap;gap:.5rem;padding:0;margin:0 0 1rem;list-style:none}
-.apx-chips a{display:inline-block;padding:.4rem .85rem;border:1px solid var(--apx-line);border-radius:999px;background:#fff;text-decoration:none;font-size:.9rem}
-.apx-checks{margin:0 0 1rem;padding-left:1.2rem}
-.apx-checks li{margin-bottom:.45rem}
-.apx-snap-grid{display:grid;gap:1rem;grid-template-columns:repeat(3,1fr);margin-top:1.75rem}
-.apx-snap-card{background:#fff;border:1px solid var(--apx-line);border-radius:var(--apx-radius);padding:1.35rem 1.35rem 1.25rem;box-shadow:0 1px 2px rgba(11,30,58,.05)}
-.apx-snap-card h3{margin:0 0 .55rem;font-size:1.02rem;display:flex;align-items:center;gap:.6rem}
-.apx-snap-ico{display:inline-flex;align-items:center;justify-content:center;width:2.1rem;height:2.1rem;border-radius:12px;background:var(--apx-navy);color:#fff;font-size:1rem;flex:none}
-.apx-snap-card p{margin:0 0 .5rem;font-size:.94rem;color:var(--apx-muted)}
-.apx-snap-card p:last-child{margin-bottom:0}
-.apx-snap-card p strong{color:var(--apx-ink)}
-.apx-snap-main{grid-row:span 2;background:var(--apx-navy);border-color:var(--apx-navy);color:#fff;display:flex;flex-direction:column}
-.apx-snap-main h3{color:#fff}
-.apx-snap-main .apx-snap-ico{background:var(--apx-accent)}
-.apx-snap-main address{font-style:normal;color:#fff;margin:0 0 .75rem;font-size:.95rem;line-height:1.6}
-.apx-snap-main p{color:#c3ccda}
-.apx-snap-main a{color:#fff}
-.apx-snap-main .apx-cta{margin-top:auto;padding-top:1rem}
-.apx-snap-main .apx-btn-ghost{background:transparent;color:#fff!important;box-shadow:inset 0 0 0 2px rgba(255,255,255,.75)}
-@media (max-width:900px){.apx-snap-grid{grid-template-columns:repeat(2,1fr)}.apx-snap-main{grid-row:auto;grid-column:1/-1}}
-@media (max-width:580px){.apx-snap-grid{grid-template-columns:1fr}}
-.skip-link{position:absolute;left:-9999px;top:0;background:#0b1e3a;color:#fff;padding:.7rem 1.2rem;z-index:9999;text-decoration:none;border-radius:0 0 8px 0}
-.skip-link:focus{left:0}
-.breadcrumb-nav{padding:.8rem 1.25rem 0}
-.breadcrumb-list{display:flex;gap:.5rem;list-style:none;margin:0;padding:0;font-size:.85rem;color:#566176}
-.breadcrumb-list li+li::before{content:"/";margin-right:.5rem;color:#a8b2c1}
-.breadcrumb-list a{color:#0b1e3a;text-decoration:none}
-.breadcrumb-list a:hover{text-decoration:underline}
-.toc{border:1px solid #dde3ec;border-radius:14px;background:#fff;padding:1.25rem 1.4rem;margin:1.5rem auto 0;max-width:1120px}
-.toc h2{margin:0 0 .75rem;font-size:1.05rem;color:#0b1e3a}
-.toc ol{margin:0;padding-left:1.2rem;columns:2;column-gap:2rem}
-.toc li{margin-bottom:.35rem}
-.toc a{color:#0b1e3a;text-decoration:none;font-size:.94rem}
-.toc a:hover{text-decoration:underline;color:#d9381e}
-@media (max-width:640px){.toc ol{columns:1}}
-.video-grid{display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,20rem),1fr));margin-top:1.5rem}
-.video-card{background:#fff;border:1px solid #dde3ec;border-radius:14px;overflow:hidden}
-.video-frame{position:relative;padding-top:56.25%;background:#0b1e3a}
-.video-frame iframe,.video-frame video,.video-frame img{position:absolute;inset:0;width:100%;height:100%;border:0;object-fit:cover}
-.video-card h3{margin:0;padding:1rem 1.1rem .35rem;font-size:1rem;color:#0b1e3a}
-.video-card p{margin:0;padding:0 1.1rem 1.1rem;font-size:.92rem;color:#566176}
-.app-band{display:grid;gap:1.25rem;grid-template-columns:1fr auto;align-items:center;background:#0b1e3a;color:#fff;border-radius:16px;padding:1.75rem 1.6rem;margin-top:1.5rem}
-.app-band h3{margin:0 0 .4rem;color:#fff;font-size:1.15rem}
-.app-band p{margin:0;color:#c3ccda;font-size:.95rem}
-.app-band .apx-cta{margin:0}
-@media (max-width:720px){.app-band{grid-template-columns:1fr}}
-.trust-band{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr));margin-top:1.5rem}
-.trust-item{background:#fff;border:1px solid #dde3ec;border-radius:12px;padding:1rem 1.1rem}
-.trust-item strong{display:block;color:#0b1e3a;font-size:1rem}
-.trust-item span{color:#566176;font-size:.9rem}
-.cro-form{display:grid;gap:.9rem;grid-template-columns:1fr 1fr;background:#fff;border:1px solid #dde3ec;border-radius:16px;padding:1.5rem;margin-top:1.5rem}
-.cro-form label{display:block;font-weight:600;color:#0b1e3a;font-size:.9rem;margin-bottom:.3rem}
-.cro-form input,.cro-form select,.cro-form textarea{width:100%;padding:.7rem .85rem;border:1px solid #cfd7e3;border-radius:10px;font:inherit;font-size:.95rem;color:#16202e;background:#fff}
-.cro-form input:focus,.cro-form select:focus,.cro-form textarea:focus{outline:2px solid #0b1e3a;outline-offset:1px}
-.cro-form .full{grid-column:1/-1}
-.cro-form button{grid-column:1/-1;padding:.9rem 1.3rem;border:0;border-radius:10px;background:#d9381e;color:#fff;font-weight:700;font-size:1rem;cursor:pointer}
-.cro-form button:hover{filter:brightness(.93)}
-.cro-form small{grid-column:1/-1;color:#566176;font-size:.82rem}
-@media (max-width:620px){.cro-form{grid-template-columns:1fr}}
-.visually-hidden{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-</style>
 
 <!-- Table of contents (SXO + AEO jump links) -->
 <nav class="toc" aria-label="On this page">
   <h2>On this page</h2>
   <ol>
     <li><a href="#apex-at-a-glance">At a glance</a></li>
+    <li><a href="#trust">Why drivers trust us</a></li>
     <li><a href="#areas-served">Areas we serve</a></li>
     <li><a href="#symptom-guide">Match the symptom to the repair</a></li>
     <li><a href="#ontario-car-care">Ontario seasonal car care</a></li>
     <li><a href="#how-we-compare">Diagnosis first vs parts swapping</a></li>
     <li><a href="#video-tour-section">Video: shop tour</a></li>
+    <li><a href="#booking">Book an appointment</a></li>
     <li><a href="#faq">Car servicing FAQ</a></li>
     <li><a href="#all-services">Every service we perform</a></li>
     <li><a href="#castrol-warranty">Castrol engine warranty</a></li>
-    <li><a href="#booking">Book an appointment</a></li>
     <li><a href="#reviews">Customer reviews</a></li>
     <li><a href="#visit">Visit us</a></li>
   </ol>
@@ -1380,6 +1396,7 @@
   <div class="apx-wrap">
     <p class="apx-kicker">Why drivers trust us</p>
     <h2 id="apx-trust-h">Straight answers, real proof, no surprises</h2>
+    <p class="apx-lead">Rated <strong>4.9 out of 5</strong> from <strong>187 customer reviews</strong> across Google, Yelp and Facebook.</p>
     <div class="trust-band">
       <div class="trust-item"><strong>4.9 / 5 average rating</strong><span>Based on 187 customer reviews across Google, Yelp and Facebook.</span></div>
       <div class="trust-item"><strong>Written upfront quotes</strong><span>Parts and labour broken out. Approved by you before any work begins.</span></div>
@@ -1411,28 +1428,28 @@
     <h2 id="apx-symptoms-h">Match the symptom to the repair</h2>
     <p class="apx-lead">Most drivers do not search for "ball joint replacement". They search for the noise. Find yours below, then call us with the details and we will tell you what the test should confirm.</p>
     <div class="apx-grid">
-      <article class="apx-card apx-symptom"><img src="assets/img/oil-change.jpg" alt="Lube, Oil and Filter: Oil change sticker mileage has passed, or it has been more than 6 months" loading="lazy"><p class="apx-tag">Symptom</p><h3>Oil change sticker mileage has passed, or it has been more than 6 months</h3><p>Full service oil changes with quality oil and a new filter, plus a courtesy inspection at every visit.</p><p>See: <a href="services/lube-oil-filter.html">Lube, Oil and Filter</a></p></article>
-      <article class="apx-card apx-symptom"><img src="assets/img/diagnostics.jpg" alt="Diagnostic Services: Check engine, ABS, airbag or traction control light stays on" loading="lazy"><p class="apx-tag">Symptom</p><h3>Check engine, ABS, airbag or traction control light stays on</h3><p>Computer diagnostics and hands on testing that pinpoint warning lights, strange noises and performance issues.</p><p>See: <a href="services/diagnostic-services.html">Diagnostic Services</a></p></article>
-      <article class="apx-card apx-symptom"><img src="assets/img/electrical.jpg" alt="Electrical Diagnostic: Battery dies overnight or needs frequent boosts" loading="lazy"><p class="apx-tag">Symptom</p><h3>Battery dies overnight or needs frequent boosts</h3><p>Wiring, sensors, modules and parasitic drain testing by technicians who read wiring diagrams for a living.</p><p>See: <a href="services/electrical-diagnostic.html">Electrical Diagnostic</a></p></article>
-      <article class="apx-card apx-symptom"><img src="assets/img/fuel-filter.jpg" alt="Fuel Filter Replacement: Engine hesitates or sputters under acceleration" loading="lazy"><p class="apx-tag">Symptom</p><h3>Engine hesitates or sputters under acceleration</h3><p>Fuel filter replacement that protects injectors and restores proper fuel pressure.</p><p>See: <a href="services/fuel-filter-replacement.html">Fuel Filter Replacement</a></p></article>
-      <article class="apx-card apx-symptom"><img src="assets/img/preventative-maintenance.jpg" alt="Preventative Maintenance: You are near a 30, 60, 90 or 120k service milestone" loading="lazy"><p class="apx-tag">Symptom</p><h3>You are near a 30, 60, 90 or 120k service milestone</h3><p>Factory scheduled maintenance, fluid services and full vehicle inspections that keep you ahead of breakdowns.</p><p>See: <a href="services/preventative-maintenance.html">Preventative Maintenance</a></p></article>
-      <article class="apx-card apx-symptom"><img src="assets/img/brake-service.jpg" alt="Brake Replacement and Repair: Squealing, squeaking or grinding when you brake" loading="lazy"><p class="apx-tag">Symptom</p><h3>Squealing, squeaking or grinding when you brake</h3><p>Pads, rotors, calipers and full brake system repair with proper bedding and a road test on every job.</p><p>See: <a href="services/brake-replacement-repair.html">Brake Replacement and Repair</a></p></article>
-      <article class="apx-card apx-symptom"><img src="assets/img/engine-repair.jpg" alt="Engine Repair and Maintenance: Oil or coolant spots where you park" loading="lazy"><p class="apx-tag">Symptom</p><h3>Oil or coolant spots where you park</h3><p>Engine diagnostics, tune ups, gaskets, seals and mechanical repairs for all makes and models.</p><p>See: <a href="services/engine-repair-maintenance.html">Engine Repair and Maintenance</a></p></article>
-      <article class="apx-card apx-symptom"><img src="assets/img/coolant-flush.jpg" alt="Coolant Flush: Temperature gauge runs higher than normal" loading="lazy"><p class="apx-tag">Symptom</p><h3>Temperature gauge runs higher than normal</h3><p>Complete cooling system flush with fresh antifreeze mixed for Canadian winters, plus pressure testing.</p><p>See: <a href="services/coolant-flush.html">Coolant Flush</a></p></article>
-      <article class="apx-card apx-symptom"><img src="assets/img/ball-joint.jpg" alt="Ball Joint Replacement: Clunking or knocking over bumps, especially when turning" loading="lazy"><p class="apx-tag">Symptom</p><h3>Clunking or knocking over bumps, especially when turning</h3><p>Ball joint and control arm replacement with proper torque specs and a road test on every job.</p><p>See: <a href="services/ball-joint-replacement.html">Ball Joint Replacement</a></p></article>
-      <article class="apx-card apx-symptom"><img src="assets/img/fuel-pump.jpg" alt="Fuel Pump Replacement: Engine cranks a long time before starting" loading="lazy"><p class="apx-tag">Symptom</p><h3>Engine cranks a long time before starting</h3><p>Fuel pump diagnosis and replacement with fuel pressure testing before and after the job.</p><p>See: <a href="services/fuel-pump-replacement.html">Fuel Pump Replacement</a></p></article>
-      <article class="apx-card apx-symptom"><img src="assets/img/ac-service.jpg" alt="AC Service and Replacement: AC blows warm or only slightly cool" loading="lazy"><p class="apx-tag">Symptom</p><h3>AC blows warm or only slightly cool</h3><p>AC recharge, leak detection, compressor and component replacement with proper evacuation and testing.</p><p>See: <a href="services/ac-service-replacement.html">AC Service and Replacement</a></p></article>
-      <article class="apx-card apx-symptom"><img src="assets/img/wheel-bearing.jpg" alt="Wheel Bearings Replacement: Humming or roaring that gets louder with speed" loading="lazy"><p class="apx-tag">Symptom</p><h3>Humming or roaring that gets louder with speed</h3><p>Wheel hub and bearing replacement that eliminates humming, grinding and play at the wheel.</p><p>See: <a href="services/wheel-bearings-replacement.html">Wheel Bearings Replacement</a></p></article>
-      <article class="apx-card apx-symptom"><img src="assets/img/strut-assembly.jpg" alt="Strut Assembly Replacement: Car bounces more than once after a bump" loading="lazy"><p class="apx-tag">Symptom</p><h3>Car bounces more than once after a bump</h3><p>Strut and shock replacement, including complete quick strut assemblies, for safe handling and comfort.</p><p>See: <a href="services/strut-assembly-replacement.html">Strut Assembly Replacement</a></p></article>
-      <article class="apx-card apx-symptom"><img src="assets/img/oxygen-sensor.jpg" alt="Oxygen Sensor Replacement: Check engine light with an O2 sensor code" loading="lazy"><p class="apx-tag">Symptom</p><h3>Check engine light with an O2 sensor code</h3><p>O2 sensor diagnosis and replacement that restores fuel economy and clears emissions codes.</p><p>See: <a href="services/oxygen-sensor-replacement.html">Oxygen Sensor Replacement</a></p></article>
-      <article class="apx-card apx-symptom"><img src="assets/img/battery-check.jpg" alt="Battery, Alternator and Starter Check: Slow cranking, especially on cold mornings" loading="lazy"><p class="apx-tag">Symptom</p><h3>Slow cranking, especially on cold mornings</h3><p>Complete starting and charging system testing: battery, alternator, starter, cables and parasitic drains.</p><p>See: <a href="services/battery-alternator-starter.html">Battery, Alternator and Starter Check</a></p></article>
-      <article class="apx-card apx-symptom"><img src="assets/img/cv-axle.jpg" alt="CV Axle and Shaft Assembly Replacement: Clicking or popping when turning sharply" loading="lazy"><p class="apx-tag">Symptom</p><h3>Clicking or popping when turning sharply</h3><p>CV axle replacement for clicking on turns, torn boots and vibration under acceleration.</p><p>See: <a href="services/cv-axle-shaft-assembly.html">CV Axle and Shaft Assembly Replacement</a></p></article>
-      <article class="apx-card apx-symptom"><img src="assets/img/spark-plugs.jpg" alt="Ignition Coils and Spark Plugs Replacement: Engine misfires, stumbles or shakes at idle" loading="lazy"><p class="apx-tag">Symptom</p><h3>Engine misfires, stumbles or shakes at idle</h3><p>Spark plug and ignition coil service that cures misfires, rough idle and hesitation.</p><p>See: <a href="services/ignition-coils-spark-plugs.html">Ignition Coils and Spark Plugs Replacement</a></p></article>
-      <article class="apx-card apx-symptom"><img src="assets/img/engine-mount.jpg" alt="Engine and Transmission Mount Replacement: Clunk when shifting into drive or reverse" loading="lazy"><p class="apx-tag">Symptom</p><h3>Clunk when shifting into drive or reverse</h3><p>Motor and transmission mount replacement that eliminates clunks, vibration and harsh shifting feel.</p><p>See: <a href="services/engine-transmission-mount.html">Engine and Transmission Mount Replacement</a></p></article>
-      <article class="apx-card apx-symptom"><img src="assets/img/body-work.jpg" alt="Collision Body Work: Dents, creases or cracked paint from an accident or parking hit" loading="lazy"><p class="apx-tag">Symptom</p><h3>Dents, creases or cracked paint from an accident or parking hit</h3><p>Collision body repair: dent removal, panel replacement and alignment that bring your car back to factory lines.</p><p>See: <a href="services/collision-body-work.html">Collision Body Work</a></p></article>
-      <article class="apx-card apx-symptom"><img src="assets/img/frame-straightening.jpg" alt="Frame Straightening: Car pulls to one side after an accident" loading="lazy"><p class="apx-tag">Symptom</p><h3>Car pulls to one side after an accident</h3><p>Computer-measured frame straightening that restores structural alignment after a collision.</p><p>See: <a href="services/frame-straightening.html">Frame Straightening</a></p></article>
-      <article class="apx-card apx-symptom"><img src="assets/img/auto-painting.jpg" alt="Auto Painting: Clear coat peeling, fading or turning chalky" loading="lazy"><p class="apx-tag">Symptom</p><h3>Clear coat peeling, fading or turning chalky</h3><p>Professional auto painting: full resprays, panel painting and colour matching with a flawless finish.</p><p>See: <a href="services/auto-painting.html">Auto Painting</a></p></article>
-      <article class="apx-card apx-symptom"><img src="assets/img/towing.jpg" alt="24/7 Towing Service: Car broke down and will not restart" loading="lazy"><p class="apx-tag">Symptom</p><h3>Car broke down and will not restart</h3><p>24/7 towing across North York and the GTA. One call and a truck is on its way, day or night.</p><p>See: <a href="services/towing-service.html">24/7 Towing Service</a></p></article>
+      <article class="apx-card apx-symptom"><img src="assets/img/oil-change.jpg" alt="Lube, Oil and Filter: Oil change sticker mileage has passed, or it has been more than 6 months" loading="lazy" width="400" height="180"><p class="apx-tag">Symptom</p><h3>Oil change sticker mileage has passed, or it has been more than 6 months</h3><p>Full service oil changes with quality oil and a new filter, plus a courtesy inspection at every visit.</p><p>See: <a href="services/lube-oil-filter.html">Lube, Oil and Filter</a></p></article>
+      <article class="apx-card apx-symptom"><img src="assets/img/diagnostics.jpg" alt="Diagnostic Services: Check engine, ABS, airbag or traction control light stays on" loading="lazy" width="400" height="180"><p class="apx-tag">Symptom</p><h3>Check engine, ABS, airbag or traction control light stays on</h3><p>Computer diagnostics and hands on testing that pinpoint warning lights, strange noises and performance issues.</p><p>See: <a href="services/diagnostic-services.html">Diagnostic Services</a></p></article>
+      <article class="apx-card apx-symptom"><img src="assets/img/electrical.jpg" alt="Electrical Diagnostic: Battery dies overnight or needs frequent boosts" loading="lazy" width="400" height="180"><p class="apx-tag">Symptom</p><h3>Battery dies overnight or needs frequent boosts</h3><p>Wiring, sensors, modules and parasitic drain testing by technicians who read wiring diagrams for a living.</p><p>See: <a href="services/electrical-diagnostic.html">Electrical Diagnostic</a></p></article>
+      <article class="apx-card apx-symptom"><img src="assets/img/fuel-filter.jpg" alt="Fuel Filter Replacement: Engine hesitates or sputters under acceleration" loading="lazy" width="400" height="180"><p class="apx-tag">Symptom</p><h3>Engine hesitates or sputters under acceleration</h3><p>Fuel filter replacement that protects injectors and restores proper fuel pressure.</p><p>See: <a href="services/fuel-filter-replacement.html">Fuel Filter Replacement</a></p></article>
+      <article class="apx-card apx-symptom"><img src="assets/img/preventative-maintenance.jpg" alt="Preventative Maintenance: You are near a 30, 60, 90 or 120k service milestone" loading="lazy" width="400" height="180"><p class="apx-tag">Symptom</p><h3>You are near a 30, 60, 90 or 120k service milestone</h3><p>Factory scheduled maintenance, fluid services and full vehicle inspections that keep you ahead of breakdowns.</p><p>See: <a href="services/preventative-maintenance.html">Preventative Maintenance</a></p></article>
+      <article class="apx-card apx-symptom"><img src="assets/img/brake-service.jpg" alt="Brake Replacement and Repair: Squealing, squeaking or grinding when you brake" loading="lazy" width="400" height="180"><p class="apx-tag">Symptom</p><h3>Squealing, squeaking or grinding when you brake</h3><p>Pads, rotors, calipers and full brake system repair with proper bedding and a road test on every job.</p><p>See: <a href="services/brake-replacement-repair.html">Brake Replacement and Repair</a></p></article>
+      <article class="apx-card apx-symptom"><img src="assets/img/engine-repair.jpg" alt="Engine Repair and Maintenance: Oil or coolant spots where you park" loading="lazy" width="400" height="180"><p class="apx-tag">Symptom</p><h3>Oil or coolant spots where you park</h3><p>Engine diagnostics, tune ups, gaskets, seals and mechanical repairs for all makes and models.</p><p>See: <a href="services/engine-repair-maintenance.html">Engine Repair and Maintenance</a></p></article>
+      <article class="apx-card apx-symptom"><img src="assets/img/coolant-flush.jpg" alt="Coolant Flush: Temperature gauge runs higher than normal" loading="lazy" width="400" height="180"><p class="apx-tag">Symptom</p><h3>Temperature gauge runs higher than normal</h3><p>Complete cooling system flush with fresh antifreeze mixed for Canadian winters, plus pressure testing.</p><p>See: <a href="services/coolant-flush.html">Coolant Flush</a></p></article>
+      <article class="apx-card apx-symptom"><img src="assets/img/ball-joint.jpg" alt="Ball Joint Replacement: Clunking or knocking over bumps, especially when turning" loading="lazy" width="400" height="180"><p class="apx-tag">Symptom</p><h3>Clunking or knocking over bumps, especially when turning</h3><p>Ball joint and control arm replacement with proper torque specs and a road test on every job.</p><p>See: <a href="services/ball-joint-replacement.html">Ball Joint Replacement</a></p></article>
+      <article class="apx-card apx-symptom"><img src="assets/img/fuel-pump.jpg" alt="Fuel Pump Replacement: Engine cranks a long time before starting" loading="lazy" width="400" height="180"><p class="apx-tag">Symptom</p><h3>Engine cranks a long time before starting</h3><p>Fuel pump diagnosis and replacement with fuel pressure testing before and after the job.</p><p>See: <a href="services/fuel-pump-replacement.html">Fuel Pump Replacement</a></p></article>
+      <article class="apx-card apx-symptom"><img src="assets/img/ac-service.jpg" alt="AC Service and Replacement: AC blows warm or only slightly cool" loading="lazy" width="400" height="180"><p class="apx-tag">Symptom</p><h3>AC blows warm or only slightly cool</h3><p>AC recharge, leak detection, compressor and component replacement with proper evacuation and testing.</p><p>See: <a href="services/ac-service-replacement.html">AC Service and Replacement</a></p></article>
+      <article class="apx-card apx-symptom"><img src="assets/img/wheel-bearing.jpg" alt="Wheel Bearings Replacement: Humming or roaring that gets louder with speed" loading="lazy" width="400" height="180"><p class="apx-tag">Symptom</p><h3>Humming or roaring that gets louder with speed</h3><p>Wheel hub and bearing replacement that eliminates humming, grinding and play at the wheel.</p><p>See: <a href="services/wheel-bearings-replacement.html">Wheel Bearings Replacement</a></p></article>
+      <article class="apx-card apx-symptom"><img src="assets/img/strut-assembly.jpg" alt="Strut Assembly Replacement: Car bounces more than once after a bump" loading="lazy" width="400" height="180"><p class="apx-tag">Symptom</p><h3>Car bounces more than once after a bump</h3><p>Strut and shock replacement, including complete quick strut assemblies, for safe handling and comfort.</p><p>See: <a href="services/strut-assembly-replacement.html">Strut Assembly Replacement</a></p></article>
+      <article class="apx-card apx-symptom"><img src="assets/img/oxygen-sensor.jpg" alt="Oxygen Sensor Replacement: Check engine light with an O2 sensor code" loading="lazy" width="400" height="180"><p class="apx-tag">Symptom</p><h3>Check engine light with an O2 sensor code</h3><p>O2 sensor diagnosis and replacement that restores fuel economy and clears emissions codes.</p><p>See: <a href="services/oxygen-sensor-replacement.html">Oxygen Sensor Replacement</a></p></article>
+      <article class="apx-card apx-symptom"><img src="assets/img/battery-check.jpg" alt="Battery, Alternator and Starter Check: Slow cranking, especially on cold mornings" loading="lazy" width="400" height="180"><p class="apx-tag">Symptom</p><h3>Slow cranking, especially on cold mornings</h3><p>Complete starting and charging system testing: battery, alternator, starter, cables and parasitic drains.</p><p>See: <a href="services/battery-alternator-starter.html">Battery, Alternator and Starter Check</a></p></article>
+      <article class="apx-card apx-symptom"><img src="assets/img/cv-axle.jpg" alt="CV Axle and Shaft Assembly Replacement: Clicking or popping when turning sharply" loading="lazy" width="400" height="180"><p class="apx-tag">Symptom</p><h3>Clicking or popping when turning sharply</h3><p>CV axle replacement for clicking on turns, torn boots and vibration under acceleration.</p><p>See: <a href="services/cv-axle-shaft-assembly.html">CV Axle and Shaft Assembly Replacement</a></p></article>
+      <article class="apx-card apx-symptom"><img src="assets/img/spark-plugs.jpg" alt="Ignition Coils and Spark Plugs Replacement: Engine misfires, stumbles or shakes at idle" loading="lazy" width="400" height="180"><p class="apx-tag">Symptom</p><h3>Engine misfires, stumbles or shakes at idle</h3><p>Spark plug and ignition coil service that cures misfires, rough idle and hesitation.</p><p>See: <a href="services/ignition-coils-spark-plugs.html">Ignition Coils and Spark Plugs Replacement</a></p></article>
+      <article class="apx-card apx-symptom"><img src="assets/img/engine-mount.jpg" alt="Engine and Transmission Mount Replacement: Clunk when shifting into drive or reverse" loading="lazy" width="400" height="180"><p class="apx-tag">Symptom</p><h3>Clunk when shifting into drive or reverse</h3><p>Motor and transmission mount replacement that eliminates clunks, vibration and harsh shifting feel.</p><p>See: <a href="services/engine-transmission-mount.html">Engine and Transmission Mount Replacement</a></p></article>
+      <article class="apx-card apx-symptom"><img src="assets/img/body-work.jpg" alt="Collision Body Work: Dents, creases or cracked paint from an accident or parking hit" loading="lazy" width="400" height="180"><p class="apx-tag">Symptom</p><h3>Dents, creases or cracked paint from an accident or parking hit</h3><p>Collision body repair: dent removal, panel replacement and alignment that bring your car back to factory lines.</p><p>See: <a href="services/collision-body-work.html">Collision Body Work</a></p></article>
+      <article class="apx-card apx-symptom"><img src="assets/img/frame-straightening.jpg" alt="Frame Straightening: Car pulls to one side after an accident" loading="lazy" width="400" height="180"><p class="apx-tag">Symptom</p><h3>Car pulls to one side after an accident</h3><p>Computer-measured frame straightening that restores structural alignment after a collision.</p><p>See: <a href="services/frame-straightening.html">Frame Straightening</a></p></article>
+      <article class="apx-card apx-symptom"><img src="assets/img/auto-painting.jpg" alt="Auto Painting: Clear coat peeling, fading or turning chalky" loading="lazy" width="400" height="180"><p class="apx-tag">Symptom</p><h3>Clear coat peeling, fading or turning chalky</h3><p>Professional auto painting: full resprays, panel painting and colour matching with a flawless finish.</p><p>See: <a href="services/auto-painting.html">Auto Painting</a></p></article>
+      <article class="apx-card apx-symptom"><img src="assets/img/towing.jpg" alt="24/7 Towing Service: Car broke down and will not restart" loading="lazy" width="400" height="180"><p class="apx-tag">Symptom</p><h3>Car broke down and will not restart</h3><p>24/7 towing across North York and the GTA. One call and a truck is on its way, day or night.</p><p>See: <a href="services/towing-service.html">24/7 Towing Service</a></p></article>
     </div>
     <div class="apx-cta">
       <a class="apx-btn" href="tel:+14166616665">Call (416) 661-6665</a>
