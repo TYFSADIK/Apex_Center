@@ -94,7 +94,7 @@
         get("bf-notes")
       ].join("\n");
       window.location.href =
-        "mailto:mustafa@apexcollisioncenter.ca?subject=" +
+        "mailto:repair@apexcollisioncenter.ca?subject=" +
         encodeURIComponent(subject) +
         "&body=" + encodeURIComponent(body);
       var note = document.getElementById("booking-note");

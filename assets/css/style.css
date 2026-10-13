@@ -423,7 +423,8 @@ p { margin: 0 0 1em; }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 760px) {
-  .nav-toggle { display: block; }
+  .nav-toggle { display: block; margin-left: auto; }
+  .nav-wrap > nav { display: contents; }
   .nav-links {
     display: none; position: absolute; top: 100%; left: 0; right: 0;
     background: #fff; flex-direction: column; align-items: stretch;

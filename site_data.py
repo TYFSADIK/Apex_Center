@@ -8,7 +8,7 @@ SITE = {
     "url": "https://apexcollisioncenter.ca",
     "phone_display": "(416) 661-6665",
     "phone_href": "+14166616665",
-    "email": "mustafa@apexcollisioncenter.ca",
+    "email": "repair@apexcollisioncenter.ca",
     "street": "Unit 41 & 42, 4544 Dufferin Street",
     "city": "Toronto",
     "district": "York University Heights, North York",
@@ -740,7 +740,7 @@ GLOBAL_FAQS = [
     },
     {
         "q": "How do I book a service?",
-        "a": "Call or text (416) 661-6665, email mustafa@apexcollisioncenter.ca, or fill out the booking form on our contact page. Tell us your vehicle and what it needs and we will confirm your time.",
+        "a": "Call or text (416) 661-6665, email repair@apexcollisioncenter.ca, or fill out the booking form on our contact page. Tell us your vehicle and what it needs and we will confirm your time.",
     },
 ]
 
